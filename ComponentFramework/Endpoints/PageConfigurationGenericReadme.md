@@ -17,7 +17,7 @@ If a data adapter is assigned to the configuration of a specific page, this meth
 
 POST `/portals/{portalUuid}/pageConfigurations/{pcUuid}/{propertyName}/{pi}/execute/{methodName}`
 
-## Mandatory Parameters
+## Mandatory parameters
 
 - `portalUuid` - The portal UUID
 - `pcUuid` - The page configuration UUID
@@ -25,7 +25,7 @@ POST `/portals/{portalUuid}/pageConfigurations/{pcUuid}/{propertyName}/{pi}/exec
 - `pi` - The index of the object within the property (if applicable)
 - `methodName` - The name of the method to be called, e.g. `getAssetAsync`
 
-## Optional Parameters
+## Optional parameters
 
 - `culture` - The culture that should be used to resolve language-specific content e.g. `en`, `de` or others
 - `previewUuid` - The preview UUID
@@ -103,11 +103,11 @@ If the background task has state completed, will contain an escaped string resul
 
 </details>
 
-## Error Handling
+## Error handling
 
 In the Swagger documentation, you can find the status codes and error codes associated with the API operations. In case of errors, appropriate HTTP status codes will be returned along with error details in the response body.
 
-### Example Error Response
+### Example error response
 
 ```json
 {

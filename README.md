@@ -1,10 +1,10 @@
 Description
 ===========
-This repository offers comprehensive documentation for utilizing Smint.io component framework interfaces and corresponding methods, with a focus on accommodating third-party developers.
+This repository offers comprehensive documentation for utilizing Smint.io component framework data adapter interfaces and corresponding methods, with a focus on accommodating third-party developers.
 
 Current version of this document is: 1.0.0 (as of 28th of February, 2024)
 
-## Accessing Documentation
+## Accessing documentation
 
 The Smint.io component framework API documentation is available on Swagger, but access is restricted.
 Please note that you will be requested to sign a Non-Disclosure Agreement (NDA) before gaining access. 
@@ -13,7 +13,7 @@ To request access, please contact [Smint.io](mailto:support@smint.io).
 Also note that, if you want to us our pre-built API clients or SDKs (available for C# and TypeScript), 
 you will need an account with Microsoft Visual Studio cloud offerings (Azure DevOps), as the SDKs are hosted there.
 
-## Swagger Page
+## Swagger page
 
 If access is granted, you can find the Swagger documentation URL by following these steps:
 
@@ -26,7 +26,7 @@ The methods required from the Smint.io Portals Frontend API are documented in se
 
 Please note that the [DataObject](/ComponentFramework/Models/DataObjects/DataObject.md) parts of the API are based on a serialization of the DataObject objects that you can also find in the Smint.io Portals Frontend API Swagger Docs - so you can refer to that.
 
-## Component Framework Section
+## Component framework section
 
 Generic endpoints for the Smint.io Portals component framework.
 
@@ -37,9 +37,9 @@ Generic endpoints for the Smint.io Portals component framework.
 - [Page template generic methods](ComponentFramework/Endpoints/PageConfigurationGenericReadme.md)
 - [UI component generic methods](ComponentFramework/Endpoints/ComponentConfigurationGenericReadme.md)
 
-### Interfaces Coverage
+### Standard data adapter interfaces
 
-Detailed coverage for each component framework interface and its methods is provided [here](/ComponentFramework/Interfaces/README.md).
+Detailed coverage for each standard component framework data adapter interface and its methods is provided [here](/ComponentFramework/Interfaces/README.md).
 
 ### Examples
 

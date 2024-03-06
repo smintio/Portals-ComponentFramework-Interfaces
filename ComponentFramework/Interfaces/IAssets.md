@@ -17,7 +17,7 @@ To maintain brevity, we will solely specify which methods are either long-runnin
 
 The `IAssets` data adapter interface provides methods to access assets in Smint.io Portals.
 
-## Child Interfaces
+## Inherited interfaces
 
 - [IAssetsRead](#IAssetsRead-Interface): Data adapter interface for reading assets.
 - [IAssetsSearch](#IAssetsSearch-Interface): Data adapter interface for searching assets.
@@ -810,9 +810,9 @@ catch (HttpRequestException hre)
 
 </details>
 
-### Common Enumerations
+### Common enumerations
 
-#### ContentType Enum
+#### ContentType enum
 
 An enum representing the content type of assets.
 
@@ -821,7 +821,7 @@ An enum representing the content type of assets.
 - `Video`: Specifies that the asset type is a video.
 - `Audio`: Specifies that the asset type is an audio file.
 
-#### ResourceAssetMode Enum
+#### ResourceAssetMode enum
 
 An enum specifying how to handle resource asset data adapters.
 

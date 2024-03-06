@@ -22,7 +22,7 @@ Current version of this document is: 1.0.0 (as of 1st of March, 2024)
 
 GET `/backgroundTasks/{backgroundTaskUuid}`
 
-## Mandatory Parameters
+## Mandatory parameters
 
 - `backgroundTaskUuid` - The background task UUID
 
@@ -51,11 +51,11 @@ An enum representing each state of the background task.
 - `error`: Specifies that the background task has an error.
 - `completed`: Specifies that the background task is completed.
 
-## Error Handling
+## Error handling
 
 In the Swagger documentation, you can find the status codes and error codes associated with the API operations. In case of errors, appropriate HTTP status codes will be returned along with error details in the response body.
 
-### Example Error Output:
+### Example error output:
 
 ```json
 {

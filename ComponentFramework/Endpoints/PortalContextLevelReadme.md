@@ -17,13 +17,13 @@ An example scenario utilizing this endpoint would be when requesting `assets`, `
 
 POST `/portals/{portalUuid}/portalsContext/{publicApiInterface}/execute/{methodName}`
 
-## Mandatory Parameters
+## Mandatory parameters
 
 - `portalUuid` - The portal UUID
 - `publicApiInterface` - The name of the data adapter interface to be called, e.g. `IAssetsRead`, `ICollectionsSearch`, `ISharesSearch`
 - `methodName` - The name of the method to be called, e.g. `getAssetAsync`, `searchCollectionsAsync`, `searchSharesAsync`
 
-## Optional Parameters
+## Optional parameters
 
 - `culture` - The culture that should be used to resolve language-specific content e.g. `en`, `de` or others
 - `previewUuid` - The preview UUID
@@ -118,11 +118,11 @@ The response is encapsulated within a `BackgroundTask` result, as detailed in th
 The example response shows that a collection with id '10' called 'Recent photos' is returned, which has two assets with their respective thumbnail URLs
 </details>
 
-## Error Handling
+## Error handling
 
 In the Swagger documentation, you can find the status codes and error codes associated with the API operations. In case of errors, appropriate HTTP status codes will be returned along with error details in the response body.
 
-### Example Error Response
+### Example error response
 
 ```json
 {

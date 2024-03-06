@@ -17,7 +17,7 @@ An example scenario could involve parsing data directly sourced from a CSV or Ex
 
 POST `/portals/{portalUuid}/portalsContext/uploadFile`
 
-## Mandatory Parameters
+## Mandatory parameters
 
 - `portalUuid` - The portal UUID
 
@@ -35,11 +35,11 @@ The returned response is in JSON format containing the UUID of the newly uploade
 }
 ```
 
-## Error Handling
+## Error handling
 
 In the Swagger documentation, you can find the status codes and error codes associated with the API operations. In case of errors, appropriate HTTP status codes will be returned along with error details in the response body.
 
-### Example Error Response
+### Example error response
 
 ```json
 {
