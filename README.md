@@ -14,7 +14,7 @@ For calling any Smint.io Portals Frontend API endpoints, a bearer token is requi
 
 ## Smint.io Portals Payload API
 
-If, upfront, more information about the user and the portal is required, the `Smint.io Portals Payload API` REST-based API can be used to query details, including e.g. the base URL of the Smint.io Portals Frontend API, if it is not known already.
+If, upfront, more information about the user and the portal is required, the `Smint.io Portals Payload API`, which is also REST-based API, can be used to query details, including e.g. the base URL of the Smint.io Portals Frontend API, if it is not known already.
 
 Pre-built API clients for the Smint.io Portals Payload API for C# and TypeScript are available on demand.
 
@@ -39,7 +39,7 @@ If access is granted, you can find the Swagger documentation for both the Smint.
 - Navigate to Help > Swagger docs
 - Select the desired API from the definition selection dropdown
 
-The methods required from the Smint.io Portals Frontend API are documented in section 'Component Framework' of this page.
+The methods required from the Smint.io Portals Frontend API are documented in section *Component framework* of this page.
 
 Please note that the [DataObject](/ComponentFramework/Models/DataObjects/DataObject.md) parts of the API are based on a serialization of the DataObject objects that you can also find in the Smint.io Portals Frontend API Swagger docs - so you can refer to those.
 
@@ -50,9 +50,9 @@ Please note that the [DataObject](/ComponentFramework/Models/DataObjects/DataObj
 These are the generic REST endpoints needed for calling the Smint.io Portals component framework:
 
 - [Portals context level methods](ComponentFramework/Endpoints/PortalContextLevelReadme.md)
-- [Upload file](ComponentFramework/Endpoints/UploadFileReadme.md)
 - [Page template generic methods](ComponentFramework/Endpoints/PageConfigurationGenericReadme.md)
 - [UI component generic methods](ComponentFramework/Endpoints/ComponentConfigurationGenericReadme.md)
+- [Upload file](ComponentFramework/Endpoints/UploadFileReadme.md)
 
 ### Standard data adapter interfaces
 
