@@ -1,48 +1,66 @@
 Description
 ===========
-This repository offers comprehensive documentation for utilizing Smint.io component framework interfaces and corresponding methods, with a focus on accommodating third-party developers.
+This repository offers comprehensive documentation for utilizing Smint.io Portals component framework data adapter interfaces and corresponding methods, with a focus on accommodating third-party developers.
 
 Current version of this document is: 1.0.0 (as of 28th of February, 2024)
 
-## Accessing Documentation
+## Smint.io Portals Frontend API
 
-Smint.io component framework API documentation is available on Swagger, but access is restricted.
+The Smint.io Portals component framework is available through the `Smint.io Portals Frontend API`, which is a REST-based API.
+
+Pre-built API clients for the Smint.io Portals Frontend API for C# and TypeScript are available on demand.
+
+For calling any Smint.io Portals Frontend API endpoints, a bearer token is required. The bearer token can be acquired by using the industry standard OAuth2 protocol.
+
+## Smint.io Portals Payload API
+
+If, upfront, more information about the user and the portal is required, the `Smint.io Portals Payload API`, which is also REST-based API, can be used to query details, including e.g. the base URL of the Smint.io Portals Frontend API, if it is not known already.
+
+Pre-built API clients for the Smint.io Portals Payload API for C# and TypeScript are available on demand.
+
+For calling any Smint.io Portals Payload API endpoints, a bearer token is required. The bearer token can be acquired by using the industry standard OAuth2 protocol.
+
+## Accessing documentation
+
+The documentation for both the Smint.io Portals Frontend API and the Smint.io Portals Payload API is available on Swagger, but access is restricted.
+
 Please note that you will be requested to sign a Non-Disclosure Agreement (NDA) before gaining access. 
 To request access, please contact [Smint.io](mailto:support@smint.io).
 
-Also note that you will need an account with Microsoft Visual Studio cloud offerings (Azure DevOps), as the SDKs are hosted there.
+Also note that, if you want to us the pre-built API clients, you will need an account with Microsoft Visual 
+Studio cloud offerings (Azure DevOps), as the API clients are hosted there.
 
-## Swagger Page
+## Swagger page
 
-If access is granted, you can find the Swagger documentation URL by following these steps:
+If access is granted, you can find the Swagger documentation for both the Smint.io Portals Frontend API and the Smint.io Portals Payload API API by following these steps:
 
-- Log into `Smint.io Portals Backend`
+- Log into your Smint.io Portals backend
 - Click the user icon
 - Navigate to Help > Swagger docs
-- Select `Smint.io Portals Frontend API` from the definition selection dropdown
+- Select the desired API from the definition selection dropdown
 
-The methods required from the Smint.io Portals Frontend API are documented in section 'Component Framework' of this page.
+The methods required from the Smint.io Portals Frontend API are documented in section *Component framework* of this page.
 
-Please note that the [DataObject](/ComponentFramework/Models/DataObjects/DataObject.md) parts of the API are based on a serialization of the DataObject objects that you can also find in the Smint.io Portals Frontend API Swagger Docs - so you can refer to that.
+Please note that the [DataObject](/ComponentFramework/Models/DataObjects/DataObject.md) parts of the API are based on a serialization of the DataObject objects that you can also find in the Smint.io Portals Frontend API Swagger docs - so you can refer to those.
 
-## Component Framework Section
-
-Generic endpoints for the Smint.io Portals component framework.
+## Component framework
 
 ### Endpoints
 
-- [Portals context level methods](ComponentFramework/Endpoints/PortalContextLevelReadme.md)
+These are the REST endpoints needed for calling the Smint.io Portals component framework:
+
+- [Portal level](ComponentFramework/Endpoints/PortalContextLevelReadme.md)
+- [Page level](ComponentFramework/Endpoints/PageConfigurationGenericReadme.md)
+- [UI component level](ComponentFramework/Endpoints/ComponentConfigurationGenericReadme.md)
 - [Upload file](ComponentFramework/Endpoints/UploadFileReadme.md)
-- [Page configuration generic methods](ComponentFramework/Endpoints/PageConfigurationGenericReadme.md)
-- [Component configuration generic methods](ComponentFramework/Endpoints/ComponentConfigurationGenericReadme.md)
 
-### Interfaces Coverage
+### Standard data adapter interfaces
 
-Detailed coverage for each component framework interface and its methods is provided [here](/ComponentFramework/Interfaces/README.md).
+Detailed coverage for each standard Smint.io Portals component framework data adapter interface and its methods is provided [here](/ComponentFramework/Interfaces/README.md).
 
 ### Examples
 
-Examples of using the C# public API client can be found [here](/Examples/NetCore/Portals-ComponentFramework-Interfaces-Test/).
+Examples of using the pre-built C# Smint.io Portals Frontend API client can be found [here](/Examples/NetCore/Portals-ComponentFramework-Interfaces-Test/).
 
 Contributors
 ============

@@ -1,33 +1,29 @@
 Description
 ===========
 
-A set of API methods is not tied to a specific page or UI component configuration, but is available in the overall portal context. Use this endpoint to call those methods.
+Some data adapter methods are not tied to the configuration of a specific UI component or page, but are tied to the overall portal context. Use this endpoint to call those methods.
 
-The complete list of supported public API interfaces can be found [here](../Interfaces/README.md)
+Learn more about how to access the Swagger documentation for this method [here](../../README.md#swagger-page).
 
-Swagger documentation can be found at `https://{tenant}.smint.io/apidocs/index.html` or see how to get the full URL [here](../../README.md#swagger-page).
-- Replace `{tenant}` with the target environment e.g. `demo`
-- Select `Smint.io Portals Frontend Api` from the definition selection dropdown
-- Find and expand `Component framework`
-- Expand `Calls component framework methods on portals context level`
+The complete list of standard data adapter interfaces and methods can be found [here](../Interfaces/README.md)
 
 Current version of this document is: 1.0.0 (as of 29th of February, 2024)
 
 ## Usage
 
-An example scenario utilizing this endpoint would be when requesting `assets`, `collections` or `shared links`. In such cases, the interface would be `IAssetsRead` with the method name `getAssetAsync`, `ICollectionsSearch` with  method name `searchCollectionsAsync` or alternatively `ISharesSearch` with method name `searchSharesAsync`
+An example scenario utilizing this endpoint would be when requesting `assets`, `collections` or `shared links`. In such cases, the data adapter interface would be `IAssetsRead` with the method name `getAssetAsync`, `ICollectionsSearch` with method name `searchCollectionsAsync`, or alternatively `ISharesSearch` with method name `searchSharesAsync`
 
 ## Signature
 
 POST `/portals/{portalUuid}/portalsContext/{publicApiInterface}/execute/{methodName}`
 
-## Mandatory Parameters
+## Mandatory parameters
 
 - `portalUuid` - The portal UUID
-- `publicApiInterface` - The API interface to be called e.g. `IAssetsRead`, `ICollectionsSearch`, `ISharesSearch` and others
-- `methodName` - The method name to be called of the data adapter public API e.g. `getAssetAsync`, `searchCollectionsAsync`, `searchSharesAsync` and others
+- `publicApiInterface` - The name of the data adapter interface to be called, e.g. `IAssetsRead`, `ICollectionsSearch`, `ISharesSearch`
+- `methodName` - The name of the method to be called, e.g. `getAssetAsync`, `searchCollectionsAsync`, `searchSharesAsync`
 
-## Optional Parameters
+## Optional parameters
 
 - `culture` - The culture that should be used to resolve language-specific content e.g. `en`, `de` or others
 - `previewUuid` - The preview UUID
@@ -39,15 +35,18 @@ POST `/portals/{portalUuid}/portalsContext/{publicApiInterface}/execute/{methodN
 
 ## Payload
 
-The request body is encoded as an escaped string. While this endpoint is designed to be generic and can accept any string input, it is important to note that each method requires the data to be formatted in a specific manner.
+The request body is encoded as an escaped string. 
 
-In the example usage scenario, the `searchCollectionsAsync` method anticipates input parameters including a query string, page number, page size, sorting criteria, and direction.
+Since the nature of this endpoint is generic it can accept any string, however each 
+method called is expecting the data to be in a specific format.
+
+For example, the `searchCollectionsAsync` method anticipates input parameters including a query string, page number, page size, sorting criteria, and direction.
 
 ```
 ["{\"queryString\":\"Recent\",\"page\":1,\"pageSize\":16,\"sortBy\":\"createdAt\",\"sortDirection\":1}"]
 ```
 
-In this scenario, the backend will retrieve collections containing the keyword 'Recent' in their name, sorted by creation date in descending order, with a page size of 16. The query string can also accept null, resulting in the retrieval of all collections based on paging.
+In this case, the backend will retrieve collections containing the keyword 'Recent' in their name, sorted by creation date in descending order, with a page size of 16. The query string can also accept null, resulting in the retrieval of all collections based on paging.
 
 <details>
   <summary>
@@ -119,11 +118,11 @@ The response is encapsulated within a `BackgroundTask` result, as detailed in th
 The example response shows that a collection with id '10' called 'Recent photos' is returned, which has two assets with their respective thumbnail URLs
 </details>
 
-## Error Handling
+## Error handling
 
 In the Swagger documentation, you can find the status codes and error codes associated with the API operations. In case of errors, appropriate HTTP status codes will be returned along with error details in the response body.
 
-### Example Error Response
+### Example error response
 
 ```json
 {

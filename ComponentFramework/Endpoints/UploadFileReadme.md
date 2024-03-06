@@ -1,13 +1,9 @@
 Description
 ===========
 
-Upload file for later use in component framework.
+Upload a file for later use in component framework.
 
-Swagger documentation can be found at `https://{tenant}.smint.io/apidocs/index.html` or see how to get the full URL [here](../../README.md#swagger-page).
-- Replace `{tenant}` with the target environment e.g. `demo`
-- Select `Smint.io Portals Frontend Api` from the definition selection dropdown
-- Find and expand `Component framework`
-- Expand `Upload file for use in component framework`
+Learn more about how to access the Swagger documentation for this method [here](../../README.md#swagger-page).
 
 Current version of this document is: 1.0.0 (as of 29th of February, 2024)
 
@@ -21,17 +17,17 @@ An example scenario could involve parsing data directly sourced from a CSV or Ex
 
 POST `/portals/{portalUuid}/portalsContext/uploadFile`
 
-## Mandatory Parameters
+## Mandatory parameters
 
 - `portalUuid` - The portal UUID
 
 ## Payload
 
-The body should be 'multipart/form-data' containing the file data as part of the request
+The body should be 'multipart/form-data' containing the file data as part of the request.
 
 ## Response
 
-The returned response is in JSON format containing the UUID of the newly uploaded file
+The returned response is in JSON format containing the UUID of the newly uploaded file, for further reference.
 
 ```JSON
 {
@@ -39,11 +35,11 @@ The returned response is in JSON format containing the UUID of the newly uploade
 }
 ```
 
-## Error Handling
+## Error handling
 
 In the Swagger documentation, you can find the status codes and error codes associated with the API operations. In case of errors, appropriate HTTP status codes will be returned along with error details in the response body.
 
-### Example Error Response
+### Example error response
 
 ```json
 {

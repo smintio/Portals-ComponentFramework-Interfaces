@@ -7,7 +7,6 @@ Current version of this document is: 1.0.0 (as of 5th of March, 2024)
 - An object representing an asset and its metadata.
 
 ## Properties
-
 - `Name`: [LocalizedStringsModel](..//Common/LocalizedStringsModel.md) - The name of the asset.
 - `Description`: [LocalizedStringsModel](../Common/LocalizedStringsArrayModel.md) - The description of the asset.
 - `ContentType`: [ContentTypeEnumDataObject](ContentTypeEnumDataObject.md) - The type of content the asset represents.
