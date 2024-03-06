@@ -3,18 +3,18 @@ Description
 
 Assets represents images, video, documents and others on the user interface.
 
-The management of assets within a Smint.io Portal is organized into distinct actions, each represented by its own interface. These interfaces encapsulate specific functionalities related to reading, searching, downloading assets.
+The management of assets within a Smint.io Portal is organized into distinct methods groups, each represented by its own interface. These interfaces encapsulate specific functionalities related to reading, searching, downloading assets.
 
 At the top level, the `IAssets` interface serves as the parent interface, inheriting all other assets-related interfaces.
 
-All action outcomes are processed asynchronously and wrapped in a background task.
+All method outcomes are processed asynchronously and wrapped in a background task.
 For more information on how background tasks are handled in Smint.io, please refer to the [background tasks documentation](../../BackgroundTasks/Endpoints/GetReadme.md).
 
-To maintain brevity, we will solely specify which actions are either long-running or immediately executed. 
+To maintain brevity, we will solely specify which methods are either long-running or immediately executed. 
 
 # IAssets Interface
 
-The `IAssets` interface provides actions to access assets in Smint.io Portals.
+The `IAssets` interface provides methods to access assets in Smint.io Portals.
 
 ## Child Interfaces
 
@@ -26,11 +26,11 @@ The `IAssets` interface provides actions to access assets in Smint.io Portals.
 
 ## IAssetsRead Interface
 
-The `IAssetsRead` interface provides actions for reading assets.
+The `IAssetsRead` interface provides methods for reading assets.
 
-Actions are only available when `Query asset details` permission is granted.
+Methods are only available when `Query asset details` permission is granted.
 
-### Actions
+### Methods
 
 #### GetAssetAsync
 
@@ -279,11 +279,11 @@ It outputs the same as `GetAssetsAsync`.
 
 ## IAssetsSearch Interface
 
-The `IAssetsSearch` interface provides actions to search for assets in Smint.io Portals.
+The `IAssetsSearch` interface provides methods to search for assets in Smint.io Portals.
 
-Actions are only available when `Query asset details` and `Search assets` permission are granted.
+Methods are only available when `Query asset details` and `Search assets` permission are granted.
 
-### Actions
+### Methods
 
 #### GetFeatureSupportAsync
 
@@ -703,11 +703,11 @@ It outputs the same as `SearchAssetsAsync`.
 
 ## IAssetsReadRandom Interface
 
-The `IAssetsReadRandom` interface provides actions for retrieving random assets in Smint.io Portals.
+The `IAssetsReadRandom` interface provides methods for retrieving random assets in Smint.io Portals.
 
-Actions are only available when `Query asset details` permission is granted.
+Methods are only available when `Query asset details` permission is granted.
 
-### Actions
+### Methods
 
 #### GetRandomAssetsAsync
 
