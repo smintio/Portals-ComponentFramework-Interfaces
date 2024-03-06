@@ -6,11 +6,12 @@ Current version of this document is: 1.0.0 (as of 28th of February, 2024)
 
 ## Accessing Documentation
 
-Smint.io component framework API documentation is available on Swagger, but access is restricted.
+The Smint.io component framework API documentation is available on Swagger, but access is restricted.
 Please note that you will be requested to sign a Non-Disclosure Agreement (NDA) before gaining access. 
 To request access, please contact [Smint.io](mailto:support@smint.io).
 
-Also note that you will need an account with Microsoft Visual Studio cloud offerings (Azure DevOps), as the SDKs are hosted there.
+Also note that, if you want to us our pre-built API clients or SDKs (available for C# and TypeScript), 
+you will need an account with Microsoft Visual Studio cloud offerings (Azure DevOps), as the SDKs are hosted there.
 
 ## Swagger Page
 
@@ -33,8 +34,8 @@ Generic endpoints for the Smint.io Portals component framework.
 
 - [Portals context level methods](ComponentFramework/Endpoints/PortalContextLevelReadme.md)
 - [Upload file](ComponentFramework/Endpoints/UploadFileReadme.md)
-- [Page configuration generic methods](ComponentFramework/Endpoints/PageConfigurationGenericReadme.md)
-- [Component configuration generic methods](ComponentFramework/Endpoints/ComponentConfigurationGenericReadme.md)
+- [Page template generic methods](ComponentFramework/Endpoints/PageConfigurationGenericReadme.md)
+- [UI component generic methods](ComponentFramework/Endpoints/ComponentConfigurationGenericReadme.md)
 
 ### Interfaces Coverage
 

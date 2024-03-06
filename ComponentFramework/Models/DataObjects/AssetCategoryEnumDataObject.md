@@ -8,6 +8,8 @@ Current version of this document is: 1.0.0 (as of 5th of March, 2024)
 
 ## Values
 
+Values for this enumeration are dynamically generated.
+
 Contributors
 ============
 

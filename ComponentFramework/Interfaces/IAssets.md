@@ -1,32 +1,33 @@
 Description
 ===========
 
-Assets represents images, video, documents and others on the user interface.
+An asset is usually a file-based record, such as an image, a video or a document. Assets also can be composed of other assets (composable assets).
 
-The management of assets within a Smint.io Portal is organized into distinct methods groups, each represented by its own interface. These interfaces encapsulate specific functionalities related to reading, searching, downloading assets.
+All asset-related functionality within the Smint.io Portal component framework is grouped into different data adapter interfaces. These different data adapter interfaces encapsulate specific functionalities related to reading, searching, downloading assets.
 
-At the top level, the `IAssets` interface serves as the parent interface, inheriting all other assets-related interfaces.
+At the top level, the `IAssets` data adapter interface serves as the parent data adapter interface, inheriting all other more specific asset-related data adapter interfaces.
 
 All method outcomes are processed asynchronously and wrapped in a background task.
+
 For more information on how background tasks are handled in Smint.io, please refer to the [background tasks documentation](../../BackgroundTasks/Endpoints/GetReadme.md).
 
 To maintain brevity, we will solely specify which methods are either long-running or immediately executed. 
 
-# IAssets Interface
+# IAssets
 
-The `IAssets` interface provides methods to access assets in Smint.io Portals.
+The `IAssets` data adapter interface provides methods to access assets in Smint.io Portals.
 
 ## Child Interfaces
 
-- [IAssetsRead](#IAssetsRead-Interface): Interface for reading assets.
-- [IAssetsSearch](#IAssetsSearch-Interface): Interface for searching assets.
-- [IAssetsReadRandom](#IAssetsReadRandom-Interface): Interface for reading assets randomly.
+- [IAssetsRead](#IAssetsRead-Interface): Data adapter interface for reading assets.
+- [IAssetsSearch](#IAssetsSearch-Interface): Data adapter interface for searching assets.
+- [IAssetsReadRandom](#IAssetsReadRandom-Interface): Data adapter interface for reading assets randomly.
 
 ---
 
-## IAssetsRead Interface
+## IAssetsRead
 
-The `IAssetsRead` interface provides methods for reading assets.
+The `IAssetsRead` data adapter interface provides methods for reading assets.
 
 Methods are only available when `Query asset details` permission is granted.
 
@@ -277,9 +278,9 @@ It outputs the same as `GetAssetsAsync`.
 
 ---
 
-## IAssetsSearch Interface
+## IAssetsSearch
 
-The `IAssetsSearch` interface provides methods to search for assets in Smint.io Portals.
+The `IAssetsSearch` data adapter interface provides methods to search for assets in Smint.io Portals.
 
 Methods are only available when `Query asset details` and `Search assets` permission are granted.
 
@@ -287,7 +288,7 @@ Methods are only available when `Query asset details` and `Search assets` permis
 
 #### GetFeatureSupportAsync
 
-Returns the supported features for the `IAssetsSearch` interface.
+Returns the supported features of the specific underlying `IAssetsSearch` implementation.
 
 ##### Input
 
@@ -701,9 +702,9 @@ It outputs the same as `SearchAssetsAsync`.
 
 ---
 
-## IAssetsReadRandom Interface
+## IAssetsReadRandom
 
-The `IAssetsReadRandom` interface provides methods for retrieving random assets in Smint.io Portals.
+The `IAssetsReadRandom` data adapter interface provides methods for retrieving random assets in Smint.io Portals.
 
 Methods are only available when `Query asset details` permission is granted.
 

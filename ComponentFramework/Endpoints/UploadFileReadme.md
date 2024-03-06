@@ -1,13 +1,9 @@
 Description
 ===========
 
-Upload file for later use in component framework.
+Upload a file for later use in component framework.
 
-Swagger documentation can be found at `https://{tenant}.smint.io/apidocs/index.html` or see how to get the full URL [here](../../README.md#swagger-page).
-- Replace `{tenant}` with the target environment e.g. `demo`
-- Select `Smint.io Portals Frontend Api` from the definition selection dropdown
-- Find and expand `Component framework`
-- Expand `Upload file for use in component framework`
+Learn more about how to access the Swagger documentation for this method [here](../../README.md#swagger-page).
 
 Current version of this document is: 1.0.0 (as of 29th of February, 2024)
 
@@ -27,11 +23,11 @@ POST `/portals/{portalUuid}/portalsContext/uploadFile`
 
 ## Payload
 
-The body should be 'multipart/form-data' containing the file data as part of the request
+The body should be 'multipart/form-data' containing the file data as part of the request.
 
 ## Response
 
-The returned response is in JSON format containing the UUID of the newly uploaded file
+The returned response is in JSON format containing the UUID of the newly uploaded file, for further reference.
 
 ```JSON
 {

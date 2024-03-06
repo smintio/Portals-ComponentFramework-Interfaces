@@ -1,19 +1,17 @@
 Description
 ===========
 
-Calls component framework methods based on a certain page configuration and a certain component configuration.
+Calls component framework methods for data adapters configured on a specific UI component on a specific page.
 
-Swagger documentation can be found at `https://{tenant}.smint.io/apidocs/index.html` or see how to get the full URL [here](../../README.md#swagger-page).
-- Replace `{tenant}` with the target environment e.g. `demo`
-- Select `Smint.io Portals Frontend Api` from the definition selection dropdown
-- Find and expand `Component framework`
-- Expand `Calls component framework methods`
+Learn more about how to access the Swagger documentation for this method [here](../../README.md#swagger-page).
+
+The complete list of standard data adapter interfaces and methods can be found [here](../Interfaces/README.md)
 
 Current version of this document is: 1.0.0 (as of 29th of February, 2024)
 
 ## Usage
 
-If a certain data adapter configuration is assigned to a specific UI component configuration on a specific page configuration, this method need to be used to call API methods of that data adapter configuration.
+If a data adapter is assigned to the configuration of a specific UI component on a specific page, this method needs to be used to call methods of that data adapter.
 
 ## Signature
 
@@ -24,9 +22,9 @@ POST `/portals/{portalUuid}/pageConfigurations/{pcUuid}/componentConfigurations/
 - `portalUuid` - The portal UUID
 - `pcUuid` - The page configuration UUID
 - `ccUuid` - The UI component configuration UUID
-- `propertyName` - The page configuration property name e.g. `backgroundImageRandomAsset`
-- `pi` - The property index within the UI component configuration
-- `methodName` - The method name to be called of the data adapter public API e.g. `getRandomAssetsAsync`
+- `propertyName` - The UI configuration property name, e.g. `backgroundImageRandomAsset`
+- `pi` - The index of the object within the property (if applicable)
+- `methodName` - The name of the method to be called, e.g. `getRandomAssetsAsync`
 
 ## Optional Parameters
 
@@ -43,9 +41,9 @@ POST `/portals/{portalUuid}/pageConfigurations/{pcUuid}/componentConfigurations/
 The request body is in the form of an escaped string.
 
 Since the nature of this endpoint is generic it can accept any string, 
-however each public API method is expecting the data to be in a specific format.
+however each method called is expecting the data to be in a specific format.
 
-Based on the usage example scenario the `getRandomAssetsAsync` method will expect an asset content type and the maximum number of assets to return.
+For example, the `getRandomAssetsAsync` method will expect an asset content type and the maximum number of assets to return.
 
 ```
 ["{\"contentType\":0,\"max\":1}"]

@@ -1,19 +1,17 @@
 Description
 ===========
 
-Calls component framework methods based on a certain page configuration.
+Calls component framework methods for data adapters configured on a specific page.
 
-Swagger documentation can be found at `https://{tenant}.smint.io/apidocs/index.html` or see how to get the full URL [here](../../README.md#swagger-page).
-- Replace `{tenant}` with the target environment e.g. `demo`
-- Select `Smint.io Portals Frontend Api` from the definition selection dropdown
-- Find and expand `Component framework`
-- Expand `Calls component framework methods`
+Learn more about how to access the Swagger documentation for this method [here](../../README.md#swagger-page).
+
+The complete list of standard data adapter interfaces and methods can be found [here](../Interfaces/README.md)
 
 Current version of this document is: 1.0.0 (as of 29th of February, 2024)
 
 ## Usage
 
-If a certain data adapter configuration is assigned to a specific page configuration, this method need to be used to call API methods of that data adapter configuration.
+If a data adapter is assigned to the configuration of a specific page, this method needs to be used to call methods of that data adapter.
 
 ## Signature
 
@@ -23,9 +21,9 @@ POST `/portals/{portalUuid}/pageConfigurations/{pcUuid}/{propertyName}/{pi}/exec
 
 - `portalUuid` - The portal UUID
 - `pcUuid` - The page configuration UUID
-- `propertyName` - The page configuration property name e.g. `assetsSearch`
-- `pi` - The property index within the configuration
-- `methodName` - The method name to be called of the data adapter public API e.g. `getAssetAsync`
+- `propertyName` - The page configuration property name, e.g. `assetsSearch`
+- `pi` - The index of the object within the property (if applicable)
+- `methodName` - The name of the method to be called, e.g. `getAssetAsync`
 
 ## Optional Parameters
 
@@ -40,10 +38,11 @@ POST `/portals/{portalUuid}/pageConfigurations/{pcUuid}/{propertyName}/{pi}/exec
 ## Payload
 
 The request body is in the form of an escaped string.
-Since the nature of this endpoint is generic it can accept any string, however each 
-public API method is expecting the data to be in a specific format.
 
-Based on the usage example scenario the `getAssetAsync` method will expect an asset identifier.
+Since the nature of this endpoint is generic it can accept any string, however each 
+method called is expecting the data to be in a specific format.
+
+For example, the `getAssetAsync` method will expect an asset identifier.
 
 ```
 ["{\"assetId\":{\"id\":\"123:image:AVFgSgVHUP18jI2wRx0w\"}}"]
@@ -71,6 +70,7 @@ In this case, the backend will return an asset with the requested ID if found.
 ## Response
 
 The returned response is wrapped in a `BackgroundTask` result as listed in the `Schema` section in the Swagger documentation.
+
 If the background task has state completed, will contain an escaped string result.
 
 ```JSON
