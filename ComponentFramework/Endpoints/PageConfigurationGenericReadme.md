@@ -3,7 +3,11 @@ Description
 
 Calls component framework methods based on a certain page configuration.
 
-Swagger documentation can be found [here](https://portals-development.smint.io:40443/apidocs/index.html?urls.primaryName=Smint.io%20Portals%20Frontend%20API#operations-Component_framework-executeDataAdapterConfigurationPublicApiInterfaceMethodForPortalsContext).
+Swagger documentation can be found at `https://{tenant}.smint.io/apidocs/index.html` or see how to get the full URL [here](../../README.md#swagger-page).
+- Replace `{tenant}` with the target environment e.g. `demo`
+- Select `Smint.io Portals Frontend Api` from the definition selection dropdown
+- Find and expand `Component framework`
+- Expand `Calls component framework methods`
 
 Current version of this document is: 1.0.0 (as of 29th of February, 2024)
 

@@ -5,7 +5,11 @@ A set of API methods is not tied to a specific page or UI component configuratio
 
 The complete list of supported public API interfaces can be found [here](../Interfaces/README.md)
 
-Swagger documentation can be found [here](https://portals-development.smint.io:40443/apidocs/index.html?urls.primaryName=Smint.io%20Portals%20Frontend%20API#operations-Component_framework-executeDataAdapterConfigurationPublicApiInterfaceMethodForPortalsContext).
+Swagger documentation can be found at `https://{tenant}.smint.io/apidocs/index.html` or see how to get the full URL [here](../../README.md#swagger-page).
+- Replace `{tenant}` with the target environment e.g. `demo`
+- Select `Smint.io Portals Frontend Api` from the definition selection dropdown
+- Find and expand `Component framework`
+- Expand `Calls component framework methods on portals context level`
 
 Current version of this document is: 1.0.0 (as of 29th of February, 2024)
 

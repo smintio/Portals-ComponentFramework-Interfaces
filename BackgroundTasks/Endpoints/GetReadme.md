@@ -12,7 +12,11 @@ These tasks are designed to perform various operations asynchronously, allowing 
 - **Long-Running Tasks**: Long-running tasks are operations that may take a significant amount of time to complete. These tasks are initiated and monitored asynchronously. The status and progress of long-running tasks can be queried repeatedly until they either completed or reach an error state. The result of a long-running task is provided in the `result_string` property upon completion.
 - **Immediate-Execution Tasks**: Immediate-execution tasks are operations that are executed immediately without significant delay. Unlike long-running tasks, immediate-execution tasks typically complete quickly and provide their result promptly. The result of an immediate-execution task is also available in the `result_string` property upon completion.
 
-Swagger documentation can be found [here](https://portals-development.smint.io:40443/apidocs/index.html?urls.primaryName=Smint.io%20Portals%20Frontend%20API#operations-tag-Background_Tasks).
+Swagger documentation can be found at `https://{tenant}.smint.io/apidocs/index.html` or see how to get the full URL [here](../../README.md#swagger-page).
+- Replace `{tenant}` with the target environment e.g. `demo`
+- Select `Smint.io Portals Frontend Api` from the definition selection dropdown
+- Find and expand `Background Tasks`
+- Expand `Get background task information`
 
 Current version of this document is: 1.0.0 (as of 1st of March, 2024)
 
