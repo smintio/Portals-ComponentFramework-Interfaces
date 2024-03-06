@@ -39,7 +39,7 @@ POST `/portals/{portalUuid}/portalsContext/{publicApiInterface}/execute/{methodN
 
 ## Payload
 
-The request body is encoded as an escaped string. While this endpoint is designed to be generic and can accept any string input, it is important to note that each public API method requires the data to be formatted in a specific manner.
+The request body is encoded as an escaped string. While this endpoint is designed to be generic and can accept any string input, it is important to note that each method requires the data to be formatted in a specific manner.
 
 In the example usage scenario, the `searchCollectionsAsync` method anticipates input parameters including a query string, page number, page size, sorting criteria, and direction.
 
