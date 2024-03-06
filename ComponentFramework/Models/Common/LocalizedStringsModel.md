@@ -5,6 +5,7 @@ This README describes the properties of an `LocalizedStringsModel`.
 Current version of this document is: 1.0.0 (as of 5th of March, 2024)
 
 - A representation of a fully localized property.
+- If no language-specific value is available for a particular language, the `x-default` value should be used. Otherwise, values for specific languages such as `en`, `de` and etc.
 
 ## Properties
 
