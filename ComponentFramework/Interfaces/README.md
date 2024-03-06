@@ -1,6 +1,6 @@
 Description
 ===========
-This README briefly mentions the available interfaces. 
+This README briefly mentions the available component framework interfaces.
 
 Current version of this document is: 1.0.0 (as of 1st of March, 2024)
 
