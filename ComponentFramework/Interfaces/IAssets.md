@@ -9,7 +9,7 @@ At the top level, the `IAssets` data adapter interface serves as the parent data
 
 All method outcomes are processed asynchronously and wrapped in a background task.
 
-For more information on how background tasks are handled in Smint.io, please refer to the [background tasks documentation](../../BackgroundTasks/Endpoints/GetReadme.md).
+For more information on how background tasks are handled in Smint.io, please refer to the [background tasks documentation](../../BackgroundTasks/Endpoints/BackgroundTask.md).
 
 To maintain brevity, we will solely specify which methods are either long-running or immediately executed. 
 
