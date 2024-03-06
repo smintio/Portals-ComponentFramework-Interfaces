@@ -1,6 +1,6 @@
 Description
 ===========
-This repository offers comprehensive documentation for utilizing Smint.io component framework interfaces and corresponding frontend public APIs, with a focus on accommodating third-party developers.
+This repository offers comprehensive documentation for utilizing Smint.io component framework interfaces and corresponding methods, with a focus on accommodating third-party developers.
 
 Current version of this document is: 1.0.0 (as of 28th of February, 2024)
 
@@ -19,7 +19,7 @@ If access is granted, you can find the Swagger documentation URL by following th
 - Log into `Smint.io Portals Backend`
 - Click the user icon
 - Navigate to Help > Swagger docs
-- Select `Smint.io Portals Frontend Api` from the definition selection dropdown
+- Select `Smint.io Portals Frontend API` from the definition selection dropdown
 
 The methods required from the Smint.io Portals Frontend API are documented in section 'Component Framework' of this page.
 
@@ -38,7 +38,7 @@ Generic endpoints for the Smint.io Portals component framework.
 
 ### Interfaces Coverage
 
-Detailed coverage for each public API interface is provided [here](/ComponentFramework/Interfaces/README.md).
+Detailed coverage for each component framework interface and its methods is provided [here](/ComponentFramework/Interfaces/README.md).
 
 ### Examples
 

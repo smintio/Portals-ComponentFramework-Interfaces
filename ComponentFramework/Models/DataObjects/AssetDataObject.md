@@ -10,7 +10,7 @@ Current version of this document is: 1.0.0 (as of 5th of March, 2024)
 
 - `Name`: [LocalizedStringsModel](..//Common/LocalizedStringsModel.md) - The name of the asset.
 - `Description`: [LocalizedStringsModel](../Common/LocalizedStringsArrayModel.md) - The description of the asset.
-- `ContentType: [ContentTypeEnumDataObject](ContentTypeEnumDataObject.md) - The type of content the asset represents.
+- `ContentType`: [ContentTypeEnumDataObject](ContentTypeEnumDataObject.md) - The type of content the asset represents.
 - `CompositeAssetType`: [CompositeAssetTypeEnumDataObject](CompositeAssetTypeEnumDataObject.md) - The type of composite asset.
 - `AssetCategories`: [AssetCategoryEnumDataObject](AssetCategoryEnumDataObject.md) - The categories the asset belongs to.
 - `FileMetadata`: [FileMetadataDataObject](FileMetadataDataObject.md) - Metadata associated with the file.
