@@ -1,7 +1,9 @@
 Description
 ===========
 
-Upload file for use in component framework.
+Upload file for later use in component framework.
+
+Swagger documentation can be found [here](https://portals-development.smint.io:40443/apidocs/index.html?urls.primaryName=Smint.io%20Portals%20Frontend%20API#operations-Component_framework-uploadFile).
 
 Current version of this document is: 1.0.0 (as of 29th of February, 2024)
 

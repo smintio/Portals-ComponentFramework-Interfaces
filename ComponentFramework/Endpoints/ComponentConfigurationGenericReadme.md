@@ -1,7 +1,9 @@
 Description
 ===========
 
-Calls component framework configuration methods
+Calls component framework methods based on a certain page configuration and a certain component configuration.
+
+Swagger documentation can be found [here](https://portals-development.smint.io:40443/apidocs/index.html?urls.primaryName=Smint.io%20Portals%20Frontend%20API#operations-Component_framework-executeDataAdapterConfigurationPublicApiInterfaceMethodForComponentConfiguration).
 
 Current version of this document is: 1.0.0 (as of 29th of February, 2024)
 
@@ -9,7 +11,7 @@ Current version of this document is: 1.0.0 (as of 29th of February, 2024)
 
 In scenarios where the `publicApiInterface` needs resolution from both page configuration and component configuration.
 
-For instance, consider a scenario where a specific page template is assigned a `backgroundImageRandomAsset`. In this case, the property name resolves to `IAssetsReadRandom` and the result of the `getRandomAssetsAsync` method name is returned.
+If a certain data adapter configuration is assigned to a specific UI component configuration on a specific page configuration, this method need to be used to call API methods of that data adapter configuration.
 
 ## Signature
 
@@ -19,10 +21,10 @@ POST `/portals/{portalUuid}/pageConfigurations/{pcUuid}/componentConfigurations/
 
 - `portalUuid` - The portal UUID
 - `pcUuid` - The page configuration UUID
-- `ccUuid` - The component configuration UUID
+- `ccUuid` - The UI component configuration UUID
 - `propertyName` - The page configuration property name e.g. `backgroundImageRandomAsset`
-- `pi` - The property index within the configuration
-- `methodName` - The method name of the data adapter public API e.g. `getRandomAssetsAsync`
+- `pi` - The property index within the UI component configuration
+- `methodName` - The method name to be called of the data adapter public API e.g. `getRandomAssetsAsync`
 
 ## Optional Parameters
 
@@ -37,7 +39,9 @@ POST `/portals/{portalUuid}/pageConfigurations/{pcUuid}/componentConfigurations/
 ## Payload
 
 The request body is in the form of an escaped string.
-Since the nature of this endpoint is generic it can accept any string, however each public API method is expecting the data to be in a specific format.
+
+Since the nature of this endpoint is generic it can accept any string, 
+however each public API method is expecting the data to be in a specific format.
 
 Based on the usage example scenario the `getRandomAssetsAsync` method will expect an asset content type and the maximum number of assets to return.
 
@@ -66,6 +70,7 @@ In this case, the backend will return a random asset for the requested content t
 ## Response
 
 The returned response is wrapped in a `BackgroundTask` result as listed in the `Schema` section in the Swagger documentation.
+
 If the background task has state completed, will contain an escaped string result.
 
 ```JSON

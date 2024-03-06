@@ -1,15 +1,17 @@
 Description
 ===========
 
-Calls component framework methods on portals context level
+A set of API methods is not tied to a specific page or UI component configuration, but is available in the overall portal context. Use this endpoint to call those methods.
 
 The complete list of supported public API interfaces can be found [here](../Interfaces/README.md)
+
+Swagger documentation can be found [here](https://portals-development.smint.io:40443/apidocs/index.html?urls.primaryName=Smint.io%20Portals%20Frontend%20API#operations-Component_framework-executeDataAdapterConfigurationPublicApiInterfaceMethodForPortalsContext).
 
 Current version of this document is: 1.0.0 (as of 29th of February, 2024)
 
 ## Usage
 
-An example scenario utilizing this endpoint would be when requesting `assets`, `collections` or `shared links`. In such cases, the `publicApiInterface` would be `IAssetsRead` with the method name `getAssetAsync`, `ICollectionsSearch` with  method name `searchCollectionsAsync` or alternatively `ISharesSearch` with method name `searchSharesAsync`
+An example scenario utilizing this endpoint would be when requesting `assets`, `collections` or `shared links`. In such cases, the interface would be `IAssetsRead` with the method name `getAssetAsync`, `ICollectionsSearch` with  method name `searchCollectionsAsync` or alternatively `ISharesSearch` with method name `searchSharesAsync`
 
 ## Signature
 
@@ -18,8 +20,8 @@ POST `/portals/{portalUuid}/portalsContext/{publicApiInterface}/execute/{methodN
 ## Mandatory Parameters
 
 - `portalUuid` - The portal UUID
-- `publicApiInterface` - The public API interface e.g. `IAssetsRead`, `ICollectionsSearch`, `ISharesSearch` and others
-- `methodName` - The method name of the data adapter public API e.g. `getAssetAsync`, `searchCollectionsAsync`, `searchSharesAsync` and others
+- `publicApiInterface` - The API interface to be called e.g. `IAssetsRead`, `ICollectionsSearch`, `ISharesSearch` and others
+- `methodName` - The method name to be called of the data adapter public API e.g. `getAssetAsync`, `searchCollectionsAsync`, `searchSharesAsync` and others
 
 ## Optional Parameters
 

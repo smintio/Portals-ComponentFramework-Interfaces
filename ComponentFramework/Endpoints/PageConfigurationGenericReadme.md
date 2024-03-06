@@ -1,13 +1,15 @@
 Description
 ===========
 
-Calls component framework methods
+Calls component framework methods based on a certain page configuration.
+
+Swagger documentation can be found [here](https://portals-development.smint.io:40443/apidocs/index.html?urls.primaryName=Smint.io%20Portals%20Frontend%20API#operations-Component_framework-executeDataAdapterConfigurationPublicApiInterfaceMethodForPortalsContext).
 
 Current version of this document is: 1.0.0 (as of 29th of February, 2024)
 
 ## Usage
 
-When there is a need to read or search through `Assets`, `Products` or any of other of the available [interfaces](../Interfaces/README.md)
+If a certain data adapter configuration is assigned to a specific page configuration, this method need to be used to call API methods of that data adapter configuration.
 
 ## Signature
 
@@ -19,7 +21,7 @@ POST `/portals/{portalUuid}/pageConfigurations/{pcUuid}/{propertyName}/{pi}/exec
 - `pcUuid` - The page configuration UUID
 - `propertyName` - The page configuration property name e.g. `assetsSearch`
 - `pi` - The property index within the configuration
-- `methodName` - The method name of the data adapter public API e.g. `getAssetAsync`
+- `methodName` - The method name to be called of the data adapter public API e.g. `getAssetAsync`
 
 ## Optional Parameters
 
@@ -34,7 +36,8 @@ POST `/portals/{portalUuid}/pageConfigurations/{pcUuid}/{propertyName}/{pi}/exec
 ## Payload
 
 The request body is in the form of an escaped string.
-Since the nature of this endpoint is generic it can accept any string, however each public API method is expecting the data to be in a specific format
+Since the nature of this endpoint is generic it can accept any string, however each 
+public API method is expecting the data to be in a specific format.
 
 Based on the usage example scenario the `getAssetAsync` method will expect an asset identifier.
 
