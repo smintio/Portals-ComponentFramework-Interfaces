@@ -9,8 +9,6 @@ Current version of this document is: 1.0.0 (as of 29th of February, 2024)
 
 ## Usage
 
-In scenarios where the `publicApiInterface` needs resolution from both page configuration and component configuration.
-
 If a certain data adapter configuration is assigned to a specific UI component configuration on a specific page configuration, this method need to be used to call API methods of that data adapter configuration.
 
 ## Signature
