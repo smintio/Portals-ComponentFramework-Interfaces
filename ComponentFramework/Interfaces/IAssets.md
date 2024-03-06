@@ -19,9 +19,9 @@ The `IAssets` data adapter interface provides methods to access assets in Smint.
 
 ## Inherited interfaces
 
-- [IAssetsRead](#IAssetsRead-Interface): Data adapter interface for reading assets.
-- [IAssetsSearch](#IAssetsSearch-Interface): Data adapter interface for searching assets.
-- [IAssetsReadRandom](#IAssetsReadRandom-Interface): Data adapter interface for reading assets randomly.
+- [IAssetsRead](#IAssetsRead): Data adapter interface for reading assets.
+- [IAssetsSearch](#IAssetsSearch): Data adapter interface for searching assets.
+- [IAssetsReadRandom](#IAssetsReadRandom): Data adapter interface for reading assets randomly.
 
 ---
 
