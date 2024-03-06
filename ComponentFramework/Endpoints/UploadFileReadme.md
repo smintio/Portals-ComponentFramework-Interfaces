@@ -13,9 +13,9 @@ Current version of this document is: 1.0.0 (as of 29th of February, 2024)
 
 ## Usage
 
-Reserved for uploading files
+For uploading files for later use in the component framework.
 
-An example scenario could involve parsing data directly sourced from a CSV or Excel file
+An example scenario could involve parsing data directly sourced from a CSV or Excel file.
 
 ## Signature
 
