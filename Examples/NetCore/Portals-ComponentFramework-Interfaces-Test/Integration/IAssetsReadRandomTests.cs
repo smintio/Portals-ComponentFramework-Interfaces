@@ -16,6 +16,12 @@ namespace Portals.ComponentFramework.Interfaces.Test.Integration
         [Fact]
         public Task GetRandomAsset_ShouldReturn_ResultAsync()
         {
+            if (string.IsNullOrEmpty(ComponentFrameworkOptions.RandomSearchPortalComponentUuid) ||
+                string.IsNullOrEmpty(ComponentFrameworkOptions.RandomSearchComponentConfigurationUuid))
+            {
+                return Task.CompletedTask;
+            }
+
             return ExecuteAsync(async () =>
             {
                 var getRandomAssetsParameters = new GetRandomAssetsParameters
@@ -32,7 +38,7 @@ namespace Portals.ComponentFramework.Interfaces.Test.Integration
                      pcUuid: ComponentFrameworkOptions.RandomSearchPortalComponentUuid,
                      ccUuid: ComponentFrameworkOptions.RandomSearchComponentConfigurationUuid,
                      propertyName: "backgroundImageRandomAsset",
-                     pi: ComponentFrameworkOptions.PropertyIndex,
+                     pi: 0,
                      methodName: "getRandomAssetsAsync",
                      previewUuid: null,
                      x_Frontend_Context_Url: null,

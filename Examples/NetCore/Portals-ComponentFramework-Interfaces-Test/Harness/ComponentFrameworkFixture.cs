@@ -1,11 +1,12 @@
 using System;
 using System.IO;
+using System.Linq;
 using System.Net.Http;
 using System.Threading.Tasks;
 using Microsoft.Extensions.Configuration;
-using Portals.ComponentFramework.Interfaces.Test.Authentication;
 using Portals.ComponentFramework.Interfaces.Test.Models;
 using SmintIo.PortalsAPI.Frontend.Client.Generated;
+using SmintIo.PortalsFEPortal.Client.Generated;
 using Xunit;
 
 namespace Portals.ComponentFramework.Interfaces.Test.Harness
@@ -14,7 +15,10 @@ namespace Portals.ComponentFramework.Interfaces.Test.Harness
     {
         private readonly IConfiguration _configuration;
 
-        private HttpClient _httpClient;
+        // Ideally use IHttpClientFactory.
+
+        private HttpClient _portalsFePortalHttpClient = new();
+        private HttpClient _portalsApiFeHttpClient = new();
 
         public ComponentFrameworkFixture()
         {
@@ -38,29 +42,37 @@ namespace Portals.ComponentFramework.Interfaces.Test.Harness
 
         public async Task InitializeAsync()
         {
-            var accessToken = await IdentityProvider.GetAccessTokenAsync(_configuration);
-
-            // Ideally use IHttpClientFactory.
-
-            _httpClient = new HttpClient();
-
-            var apiUrl = _configuration["SmintIo:ApiUrl"];
-
-            if (string.IsNullOrEmpty(apiUrl))
+            if (string.IsNullOrEmpty(ComponentFrameworkOptions.PortalUrl))
             {
-                throw new Exception("SmintIo API URL is empty");
+                throw new Exception("Portal URL is empty");
             }
 
-            PortalsAPIFEOpenApiClient = new PortalsAPIFEOpenApiClient(_httpClient)
+            var portalsFePortalUriBuilder = new UriBuilder(ComponentFrameworkOptions.PortalUrl)
             {
-                BaseUrl = apiUrl,
-                AccessToken = accessToken
+                Path = "/portal/v1"
             };
+
+            var portalsFEPortalOpenApiClient = new PortalsFEPortalOpenApiClient(_portalsFePortalHttpClient)
+            {
+                BaseUrl = portalsFePortalUriBuilder.ToString()
+            };
+
+            var portalsPayload = await portalsFEPortalOpenApiClient.GetPortalsPayloadAsync(culture: "en");            
+
+            PortalsAPIFEOpenApiClient = new PortalsAPIFEOpenApiClient(_portalsApiFeHttpClient)
+            {
+                BaseUrl = portalsPayload.Current_tenant.Backend_api_url,
+                AccessToken = portalsPayload.Current_user.Access_token
+            };
+
+            ComponentFrameworkOptions.PortalUuid = portalsPayload.Current_portal_info.Uuid;
+            ComponentFrameworkOptions.SearchPortalComponentUuid = portalsPayload.Current_portal_info.Page_router_infos.FirstOrDefault(pri => string.Equals(pri.Page_type, "page-type-assets-search"))?.Uuid;
         }
 
         public Task DisposeAsync()
         {
-            _httpClient?.Dispose();
+            _portalsFePortalHttpClient?.Dispose();
+            _portalsApiFeHttpClient?.Dispose();
 
             return Task.CompletedTask;
         }
