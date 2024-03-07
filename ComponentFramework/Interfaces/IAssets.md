@@ -9,7 +9,7 @@ At the top level, the `IAssets` data adapter interface serves as the parent data
 
 All method outcomes are processed asynchronously and wrapped in a background task.
 
-For more information on how background tasks are handled in Smint.io, please refer to the [background tasks documentation](../../BackgroundTasks/Endpoints/GetReadme.md).
+For more information on how background tasks are handled in Smint.io, please refer to the [background tasks documentation](../../BackgroundTasks/Endpoints/BackgroundTask.md).
 
 To maintain brevity, we will solely specify which methods are either long-running or immediately executed. 
 
@@ -67,69 +67,9 @@ Retrieves details of a single asset based on the provided parameters.
 }
 ```
 
-<details>
-  <summary>
-    Example GetAssetAsync API call via C# client
-  </summary>
+##### Example
 
-```dotnet
-using SmintIo.PortalsAPI.Frontend.Client.Generated;
-// ...
-
-try
-{
-    var httpClient = _httpClientFactory.CreateClient();
-
-    var portalsAPIFEOpenApiClient = new PortalsAPIFEOpenApiClient(httpClient)
-    {
-        BaseUrl = "https://demo.portalsapife.smint.io/frontend/v1",
-        AccessToken = "..."
-    };
-
-    var getAssetRequest = new
-    {
-        AssetId = new
-        {
-            Id = "123:image:00000000-0000-0000-0000-000000000000",
-            IsPageEvent = true
-        }
-    };
-
-    var body = JsonConvert.SerializeObject(getAssetRequest);
-
-    BackgroundTask backgroundTask = null;
-
-    try
-    {
-        backgroundTask = await portalsAPIFEOpenApiClient.ExecuteDataAdapterConfigurationPublicApiInterfaceMethodForPortalsContextAsync(
-            body,
-            portalUuid: "345",
-            publicApiInterface: "IAssetsRead",
-            methodName: "getAssetAsync",
-            previewUuid: null,
-            x_Frontend_Context_Url: null,
-            x_Frontend_Context_Session_Id: null,
-            culture: "en").ConfigureAwait(false);
-    }
-    catch (ApiException<Error> apiException)
-    {
-        // ... 
-    }
-
-    if (backgroundTask?.State == BackgroundTaskStateEnum.Completed)
-    {
-        var getAssetResponse = JsonConvert.DeserializeObject<GetAssetResponse>(backgroundTask.Result_string);
-
-        // ...
-    }
-}
-catch (HttpRequestException hre)
-{
-    // ...
-}
-```
-
-</details>
+- GetAssetAsync API call via C# client can be found [here](../../Examples/NetCore/Portals-ComponentFramework-Interfaces-Test/Integration/IAssetsReadTests.cs#L17).
 
 #### GetAssetsAsync
 
@@ -172,77 +112,9 @@ Retrieves details of multiple assets based on the provided parameters.
 }
 ```
 
-<details>
-  <summary>
-    Example GetAssetsAsync API call via C# client
-  </summary>
+##### Example
 
-```dotnet
-using SmintIo.PortalsAPI.Frontend.Client.Generated;
-// ...
-
-try
-{
-    var httpClient = _httpClientFactory.CreateClient();
-
-    var portalsAPIFEOpenApiClient = new PortalsAPIFEOpenApiClient(httpClient)
-    {
-        BaseUrl = "https://demo.portalsapife.smint.io/frontend/v1",
-        AccessToken = "..."
-    };
-
-    var getAssetsRequest = new
-    {
-        AssetIds = new[]
-        {
-            new
-            {
-                Id = "123:image:00000000-0000-0000-0000-000000000000"
-            },
-            new
-            {
-                Id = "123:video:00000000-0000-0000-0000-000000000000"
-            }
-        }
-    };
-
-    var body = JsonConvert.SerializeObject(getAssetsRequest);
-
-    try
-    {
-        var backgroundTask = await portalsAPIFEOpenApiClient.ExecuteDataAdapterConfigurationPublicApiInterfaceMethodForPortalsContextAsync(
-            body,
-            portalUuid: "123",
-            publicApiInterface: "IAssetsRead",
-            methodName: "getAssetsAsync",
-            previewUuid: null,
-            x_Frontend_Context_Url: null,
-            x_Frontend_Context_Session_Id: null,
-            culture: "en").ConfigureAwait(false);
-
-        // Please note that 'GetBackgroundTaskAsync' can be called repeatedly until the background task is completed
-
-        backgroundTask = await portalsAPIFEOpenApiClient.GetBackgroundTaskAsync(backgroundTask.Uuid).ConfigureAwait(false);        
-
-        if (backgroundTask.State == BackgroundTaskStateEnum.Completed)
-        {
-            var assetsResponse = JsonConvert.DeserializeObject<GetAssetsResponse>(backgroundTask.Result_string);
-
-            // ...
-        }
-    }
-    catch (ApiException<Error> apiException)
-    {
-        // ... 
-    }
-}
-catch (HttpRequestException hre)
-{
-    // ...
-}
-```
-
-</details>
+- GetAssetsAsync API call via C# client can be found [here](../../Examples/NetCore/Portals-ComponentFramework-Interfaces-Test/Integration/IAssetsReadTests.cs#L55).
 
 #### GetResourceAssetAsync
 
@@ -312,59 +184,9 @@ Returns the supported features of the specific underlying `IAssetsSearch` implem
     "result_string": "{\"isRandomAccessSupported\":true,\"isFullTextSearchProposalsSupported\":false,\"isFolderNavigationSupported\":false}"
 }
 ```
+##### Example
 
-<details>
-  <summary>
-    Example GetFeatureSupportAsync API call via C# client
-  </summary>
-
-```dotnet
-using SmintIo.PortalsAPI.Frontend.Client.Generated;
-// ...
-
-try
-{
-    var httpClient = new HttpClient();
-
-    var portalsAPIFEOpenApiClient = new PortalsAPIFEOpenApiClient(httpClient)
-    {
-        BaseUrl = "https://demo.portalsapife.smint.io/frontend/v1",
-        AccessToken = "..."
-    };
-
-    try
-    {
-        var backgroundTask = await portalsAPIFEOpenApiClient.ExecuteDataAdapterConfigurationPublicApiInterfaceMethodForPortalsContextAsync(
-              body: null,
-              portalUuid: "123",
-              publicApiInterface: "IAssetsSearch",
-              methodName: "getFeatureSupportAsync",
-              previewUuid: null,
-              x_Frontend_Context_Url: null,
-              x_Frontend_Context_Session_Id: null,
-              culture: "en").ConfigureAwait(false);
-
-        backgroundTask = await portalsAPIFEOpenApiClient.GetBackgroundTaskAsync(backgroundTask.Uuid).ConfigureAwait(false);
-
-        if (backgroundTask.State == BackgroundTaskStateEnum.Completed)
-        {
-
-            // ...
-        }
-    }
-    catch (ApiException<Error> apiException)
-    {
-        // ... 
-    }
-}
-catch (HttpRequestException hre)
-{
-    // ...
-}
-
-```
-
-</details>
+- GetFeatureSupportAsync API call via C# client can be found [here](../../Examples/NetCore/Portals-ComponentFramework-Interfaces-Test/Integration/IAssetsSearchTests.cs#L17).
 
 #### GetFormItemDefinitionAllowedValuesAsync
 
@@ -412,85 +234,9 @@ Returns the allowed values for a form item definition
 }
 ```
 
-<details>
-  <summary>
-    Example GetFormItemDefinitionAllowedValuesAsync API call via C# client
-  </summary>
+##### Example
 
-```dotnet
-using SmintIo.PortalsAPI.Frontend.Client.Generated;
-// ...
-
-try
-{
-    var httpClient = new HttpClient();
-
-    var portalsAPIFEOpenApiClient = new PortalsAPIFEOpenApiClient(httpClient)
-    {
-        BaseUrl = "https://demo.portalsapife.smint.io/frontend/v1",
-        AccessToken = "..."
-    };
-
-    var getFormItemDefinitionAllowedValuesRequest = new
-    {
-        CurrentFilters = new[]
-        {
-            new 
-            {
-                Values = new[]
-                {
-                    new
-                    {
-                        Id = "smintIoHub:dataAdapterInstanceKey",
-                        DataType = "string",
-                        StringValue = "da:123"
-                    },
-                }
-            }                
-        },
-        FormItemDefinitionId = "innerNested-descriptiveKeyword.descriptiveKeywords._refId",
-        FormItemDefinitionQueryString = "Sunglasses",
-        MaxResultCount = 5,
-        RresourceAssetMode = ResourceAssetMode.AssetsOnly
-    };
-
-    var body = JsonConvert.SerializeObject(getFormItemDefinitionAllowedValuesRequest);
-
-    try
-    {
-        var backgroundTask = await portalsAPIFEOpenApiClient.ExecuteDataAdapterConfigurationPublicApiInterfaceMethodForPageConfigurationAsync(
-            body,
-            portalUuid: "123",
-            pcUuid: "456",
-            propertyName: "assetsSearch",
-            pi: 0,
-            methodName: "getFormItemDefinitionAllowedValuesAsync",
-            previewUuid: null,
-            x_Frontend_Context_Url: null,
-            x_Frontend_Context_Session_Id: null,
-            culture: "en").ConfigureAwait(false);
-
-        backgroundTask = await portalsAPIFEOpenApiClient.GetBackgroundTaskAsync(backgroundTask.Uuid).ConfigureAwait(false);
-
-        if (backgroundTask.State == BackgroundTaskStateEnum.Completed)
-        {
-
-            // ...
-        }
-    }
-    catch (ApiException<Error> apiException)
-    {
-        // ... 
-    }
-}
-catch (HttpRequestException hre)
-{
-    // ...
-}
-
-```
-
-</details>
+- GetFormItemDefinitionAllowedValuesAsync API call via C# client can be found [here](../../Examples/NetCore/Portals-ComponentFramework-Interfaces-Test/Integration/IAssetsSearchTests.cs#L60).
 
 #### GetFormItemDefinitionAllowedValuesResourceAssetsAsync
 
@@ -587,102 +333,10 @@ Searches for assets based on the provided parameters.
 }
 ```
 
-<details>
-  <summary>
-    Example SearchAssetsAsync API call via C# client
-  </summary>
+##### Example
 
-```dotnet
-using SmintIo.PortalsAPI.Frontend.Client.Generated;
-// ...
-
-try
-{
-    var httpClient = new HttpClient();
-
-    var portalsAPIFEOpenApiClient = new PortalsAPIFEOpenApiClient(httpClient)
-    {
-        BaseUrl = "https://demo.portalsapife.smint.io/frontend/v1",
-        AccessToken = "..."
-    };
-
-    var getAssetsSearchRequest = new[]
-    {
-        new 
-        {
-            CurrentFilters = new
-            {
-                Values = new[]
-                {
-                    new
-                    {
-                        Id = "innerNested-oochialBrandAssets.campaign.name",
-                        DataType = "string_array",
-                        StringArrayValue = new[]
-                        {
-                            new
-                            {
-                                Kind = "AggregationFilter",
-                                AggregationName = "oochialBrandAssets.campaign.name",
-                                Filter = new
-                                {
-                                    Kind = "NestedFilter",
-                                    Path = "oochialBrandAssets.campaign",
-                                    Filter = new {
-                                        Kind = "TermFilter",
-                                        Field = "oochialBrandAssets.campaign.name",
-                                        Term = "Aviators"
-                                    }
-                                }
-                            }
-                        }
-                    },
-                }
-            },
-            Page = 0,
-            PageSize = 50,
-            RresourceAssetMode = ResourceAssetMode.AssetsOnly
-        }
-    };
-
-    var body = JsonConvert.SerializeObject(getAssetsSearchRequest);
-
-    try
-    {
-        var backgroundTask = await portalsAPIFEOpenApiClient.ExecuteDataAdapterConfigurationPublicApiInterfaceMethodForPageConfigurationAsync(
-            body,
-            portalUuid: "123",
-            pcUuid: "456",
-            propertyName: "assetsSearch",
-            pi: 0,
-            methodName: "searchAssetsAsync",
-            previewUuid: null,
-            x_Frontend_Context_Url: null,
-            x_Frontend_Context_Session_Id: null,
-            culture: "en").ConfigureAwait(false);
-
-        backgroundTask = await portalsAPIFEOpenApiClient.GetBackgroundTaskAsync(backgroundTask.Uuid).ConfigureAwait(false);
-
-        if (backgroundTask.State == BackgroundTaskStateEnum.Completed)
-        {
-
-            // ...
-        }
-    }
-    catch (ApiException<Error> apiException)
-    {
-        // ... 
-    }
-}
-catch (HttpRequestException hre)
-{
-    // ...
-}
-
-```
-
-</details>
-
+- SearchAssetsAsync API call via C# client can be found [here](../../Examples/NetCore/Portals-ComponentFramework-Interfaces-Test/Integration/IAssetsSearchTests.cs#L43).
+- 
 #### SearchResourceAssetsAsync
 
 Searches for assets based on the provided parameters for a resource asset type.
@@ -748,67 +402,9 @@ This feature is only available when `isRandomAccessSupported` is true when `GetF
 }
 ```
 
-<details>
-  <summary>
-    Example GetRandomAssetsAsync API call via C# client
-  </summary>
+##### Example
 
-```dotnet
-using SmintIo.PortalsAPI.Frontend.Client.Generated;
-// ...
-
-try
-{
-    var httpClient = _httpClientFactory.CreateClient();
-
-    var portalsAPIFEOpenApiClient = new PortalsAPIFEOpenApiClient(httpClient)
-    {
-        BaseUrl = "https://demo.portalsapife.smint.io/frontend/v1",
-        AccessToken = "..."
-    };
-
-    var getRandomAssetsRequest = new
-    {
-        ContentType = ContentType.Image,
-        Max = 1
-    };
-
-    var body = JsonConvert.SerializeObject(getRandomAssetsRequest);
-
-    try
-    {
-        var backgroundTask = await portalsAPIFEOpenApiClient.ExecuteDataAdapterConfigurationPublicApiInterfaceMethodForComponentConfigurationAsync(
-            body,
-            portalUuid: "123",
-            pcUuid: "456",
-            ccUuid: "789",
-            propertyName: "backgroundImageRandomAsset",
-            pi: 0,
-            methodName: "getRandomAssetsAsync",
-            previewUuid: null,
-            x_Frontend_Context_Url: null,
-            x_Frontend_Context_Session_Id: null,
-            culture: "en").ConfigureAwait(false);
-
-        if (backgroundTask.State == BackgroundTaskStateEnum.Completed)
-        {
-            var randomAssetsResponse = JsonConvert.DeserializeObject<GetRandomAssetsResponse>(backgroundTask.Result_string);
-
-            // ...
-        }
-    }
-    catch (ApiException<Error> apiException)
-    {
-        // ... 
-    }
-}
-catch (HttpRequestException hre)
-{
-    // ...
-}
-```
-
-</details>
+- GetRandomAssetsAsync API call via C# client can be found [here](../../Examples/NetCore/Portals-ComponentFramework-Interfaces-Test/Integration/IAssetsReadRandomTests.cs#L17).
 
 ### Common enumerations
 

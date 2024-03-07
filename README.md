@@ -49,10 +49,10 @@ Please note that the [DataObject](/ComponentFramework/Models/DataObjects/DataObj
 
 These are the REST endpoints needed for calling the Smint.io Portals component framework:
 
-- [Portal level](ComponentFramework/Endpoints/PortalContextLevelReadme.md)
-- [Page level](ComponentFramework/Endpoints/PageConfigurationGenericReadme.md)
-- [UI component level](ComponentFramework/Endpoints/ComponentConfigurationGenericReadme.md)
-- [Upload file](ComponentFramework/Endpoints/UploadFileReadme.md)
+- [Portal level](ComponentFramework/Endpoints/PortalLevel.md)
+- [Page level](ComponentFramework/Endpoints/PageLevel.md)
+- [UI component level](ComponentFramework/Endpoints/UiComponentLevel.md)
+- [Upload file](ComponentFramework/Endpoints/UploadFile.md)
 
 ### Standard data adapter interfaces
 
