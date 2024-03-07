@@ -1,4 +1,5 @@
-﻿using System.Threading.Tasks;
+﻿using System;
+using System.Threading.Tasks;
 using FluentAssertions;
 using Newtonsoft.Json;
 using Portals.ComponentFramework.Interfaces.Test.Harness;
@@ -85,6 +86,8 @@ namespace Portals.ComponentFramework.Interfaces.Test.Integration
 
                 while (backgroundTask.State == BackgroundTaskStateEnum.In_progress)
                 {
+                    await Task.Delay(TimeSpan.FromSeconds(1));
+
                     backgroundTask = await PortalsAPIFEOpenApiClient.GetBackgroundTaskAsync(backgroundTask.Uuid);
                 }
 
