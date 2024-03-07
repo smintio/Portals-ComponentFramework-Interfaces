@@ -2,7 +2,7 @@ Description
 ===========
 This repository offers comprehensive documentation for utilizing Smint.io Portals component framework data adapter interfaces and corresponding methods, with a focus on accommodating third-party developers.
 
-Current version of this document is: 1.0.0 (as of 28th of February, 2024)
+Current version of this document is: 1.0.1 (as of 7h of March, 2024)
 
 ## Smint.io Portals Frontend API
 
@@ -12,6 +12,8 @@ Pre-built API clients for the Smint.io Portals Frontend API for C# and TypeScrip
 
 For calling any Smint.io Portals Frontend API endpoints, a bearer token is required. The bearer token can be acquired by using the industry standard OAuth2 protocol.
 
+A C# example of acquiring an access token is available [here](/Examples/NetCore/Portals-ComponentFramework-Interfaces-Test/Harness/ComponentFrameworkFixture.cs#L56).
+
 ## Smint.io Portals Payload API
 
 If, upfront, more information about the user and the portal is required, the `Smint.io Portals Payload API`, which is also REST-based API, can be used to query details, including e.g. the base URL of the Smint.io Portals Frontend API, if it is not known already.
@@ -19,6 +21,8 @@ If, upfront, more information about the user and the portal is required, the `Sm
 Pre-built API clients for the Smint.io Portals Payload API for C# and TypeScript are available on demand.
 
 For calling any Smint.io Portals Payload API endpoints, a bearer token is required. The bearer token can be acquired by using the industry standard OAuth2 protocol.
+
+A C# example of acquiring an access token is available [here](/Examples/NetCore/Portals-ComponentFramework-Interfaces-Test/Harness/ComponentFrameworkFixture.cs#L56).
 
 ## Accessing documentation
 
