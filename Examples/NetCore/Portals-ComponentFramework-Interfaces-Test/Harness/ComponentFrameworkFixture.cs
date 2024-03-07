@@ -4,6 +4,7 @@ using System.Linq;
 using System.Net.Http;
 using System.Threading.Tasks;
 using Microsoft.Extensions.Configuration;
+using Portals.ComponentFramework.Interfaces.Test.Authentication;
 using Portals.ComponentFramework.Interfaces.Test.Models;
 using SmintIo.PortalsAPI.Frontend.Client.Generated;
 using SmintIo.PortalsFEPortal.Client.Generated;
@@ -52,17 +53,20 @@ namespace Portals.ComponentFramework.Interfaces.Test.Harness
                 Path = "/portal/v1"
             };
 
+            var accessToken = await IdentityProvider.GetAccessTokenAsync(_configuration);
+
             var portalsFEPortalOpenApiClient = new PortalsFEPortalOpenApiClient(_portalsFePortalHttpClient)
             {
-                BaseUrl = portalsFePortalUriBuilder.ToString()
+                BaseUrl = portalsFePortalUriBuilder.ToString(),
+                AccessToken = accessToken
             };
 
-            var portalsPayload = await portalsFEPortalOpenApiClient.GetPortalsPayloadAsync(culture: "en");            
+            var portalsPayload = await portalsFEPortalOpenApiClient.GetPortalsPayloadByAccessTokenAsync(culture: "en");
 
             PortalsAPIFEOpenApiClient = new PortalsAPIFEOpenApiClient(_portalsApiFeHttpClient)
             {
                 BaseUrl = portalsPayload.Current_tenant.Backend_api_url,
-                AccessToken = portalsPayload.Current_user.Access_token
+                AccessToken = accessToken
             };
 
             ComponentFrameworkOptions.PortalUuid = portalsPayload.Current_portal_info.Uuid;
