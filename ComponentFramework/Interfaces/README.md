@@ -6,15 +6,9 @@ Please note, that at any time, using our SDKs, data adapters with custom data ad
 
 Current version of this document is: 1.0.1 (as of 7th of March, 2024)
 
-- [IAssets](IAssets.md) - Data adapter interface representing a complete feature set needed to read and search assets related data
-- [IAssetsDownload](IAssetsDownload.md) - Data adapter interface representing a set of functions required to download assets data
-- DOCUMENTATION COMING SOON:
-    - [IProducts](IProducts.md)
-    - [ICollections](ICollectinos.md)
-    - [IShares](IShares.md) 
-    - [IResources](IResources.md)
-    - [IResourceAssets](IResourceAssets.md)
-    - [ITaskManagement](ITaskManagement.md)
+- [IAssets](IAssets.md) - Data adapter interface representing a complete feature set needed to read and search assets related data.
+- [IAssetsDownload](IAssetsDownload.md) - Data adapter interface representing a set of functions required to download assets data.
+- Documentation for further interfaces (e.g. IProducts, ICollections, IShares, ...) is coming soon
 
 Contributors
 ============
