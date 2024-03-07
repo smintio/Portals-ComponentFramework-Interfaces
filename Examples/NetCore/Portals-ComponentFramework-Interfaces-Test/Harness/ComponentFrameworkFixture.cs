@@ -53,14 +53,15 @@ namespace Portals.ComponentFramework.Interfaces.Test.Harness
                 Path = "/portal/v1"
             };
 
+            var accessToken = await IdentityProvider.GetAccessTokenAsync(_configuration);
+
             var portalsFEPortalOpenApiClient = new PortalsFEPortalOpenApiClient(_portalsFePortalHttpClient)
             {
-                BaseUrl = portalsFePortalUriBuilder.ToString()
+                BaseUrl = portalsFePortalUriBuilder.ToString(),
+                AccessToken = accessToken
             };
 
-            var portalsPayload = await portalsFEPortalOpenApiClient.GetPortalsPayloadAsync(culture: "en");
-
-            var accessToken = await IdentityProvider.GetAccessTokenAsync(_configuration);
+            var portalsPayload = await portalsFEPortalOpenApiClient.GetPortalsPayloadByAccessTokenAsync(culture: "en");
 
             PortalsAPIFEOpenApiClient = new PortalsAPIFEOpenApiClient(_portalsApiFeHttpClient)
             {
