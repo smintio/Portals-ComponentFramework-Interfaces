@@ -49,7 +49,7 @@ namespace Portals.ComponentFramework.Interfaces.Test.Integration
                     Values = []
                 },
                 Page = 0,
-                PageSize = 50,
+                PageSize = 5,
                 ResourceAssetMode = 0
             };
 
@@ -65,12 +65,6 @@ namespace Portals.ComponentFramework.Interfaces.Test.Integration
                 {
                     Values =
                     [
-                        new  ValueParameters
-                        {
-                            Id = "smintIoHub:dataAdapterInstanceKey",
-                            DataType = "string",
-                            StringValue = ComponentFrameworkOptions.SearchFilterDataAdapterInstance
-                        },
                         new ValueParameters
                         {
                             Id = ComponentFrameworkOptions.SearchFilterId,
@@ -98,7 +92,7 @@ namespace Portals.ComponentFramework.Interfaces.Test.Integration
                     portalUuid: ComponentFrameworkOptions.PortalUuid,
                     pcUuid: ComponentFrameworkOptions.SearchPortalComponentUuid,
                     propertyName: "assetsSearch",
-                    pi: ComponentFrameworkOptions.PropertyIndex,
+                    pi: 0,
                     methodName: "searchAssetsAsync",
                     previewUuid: null,
                     x_Frontend_Context_Url: null,

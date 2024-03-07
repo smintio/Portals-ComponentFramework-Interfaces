@@ -3,7 +3,6 @@ using System.Threading.Tasks;
 using Newtonsoft.Json;
 using Portals.ComponentFramework.Interfaces.Test.Harness;
 using Portals.ComponentFramework.Interfaces.Test.Models;
-using Portals.ComponentFramework.Interfaces.Test.Models.Parameters;
 using SmintIo.PortalsAPI.Frontend.Client.Generated;
 
 namespace Portals.ComponentFramework.Interfaces.Test.Integration
@@ -28,7 +27,7 @@ namespace Portals.ComponentFramework.Interfaces.Test.Integration
             {
                 await func();
             }
-            catch (ApiException<string>)
+            catch (ApiException<Error>)
             {
                 // Handle exception
             }
