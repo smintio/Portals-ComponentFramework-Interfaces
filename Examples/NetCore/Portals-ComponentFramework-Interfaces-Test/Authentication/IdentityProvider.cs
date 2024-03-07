@@ -7,9 +7,9 @@ namespace Portals.ComponentFramework.Interfaces.Test.Authentication
 {
     public static class IdentityProvider
     {
-        public static async Task<string> GetAccessTokenAsync(IConfiguration configuration, string authority)
+        public static async Task<string> GetAccessTokenAsync(IConfiguration configuration, string portalUrl)
         {
-            var oidcClientOptions = GetOidcClientOptions(configuration, authority);
+            var oidcClientOptions = GetOidcClientOptions(configuration, portalUrl);
 
             if (oidcClientOptions == null)
             {
@@ -28,11 +28,11 @@ namespace Portals.ComponentFramework.Interfaces.Test.Authentication
             return loginResult.AccessToken;
         }
 
-        private static OidcClientOptions GetOidcClientOptions(IConfiguration configuration, string authority)
+        private static OidcClientOptions GetOidcClientOptions(IConfiguration configuration, string portalUrl)
         {
-            if (string.IsNullOrEmpty(authority))
+            if (string.IsNullOrEmpty(portalUrl))
             {
-                throw new Exception("Auth authority configuration is empty");
+                throw new Exception("Portal URL is empty");
             }
 
             var clientId = configuration["SmintIo:Auth:ClientId"];
@@ -53,7 +53,7 @@ namespace Portals.ComponentFramework.Interfaces.Test.Authentication
 
             if (string.IsNullOrEmpty(redirectUrl))
             {
-                throw new Exception("Redirect url configuration is empty");
+                throw new Exception("Redirect URL configuration is empty");
             }
 
             var redirectUri = new Uri(redirectUrl);
@@ -64,7 +64,7 @@ namespace Portals.ComponentFramework.Interfaces.Test.Authentication
 
             var oidcClientOptions = new OidcClientOptions
             {
-                Authority = authority,
+                Authority = portalUrl,
                 ClientId = clientId,
                 ClientSecret = clientSecret,
                 Scope = "smintio.portals.frontend openid profile offline_access",

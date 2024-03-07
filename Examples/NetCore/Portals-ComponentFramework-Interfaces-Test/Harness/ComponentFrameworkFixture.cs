@@ -53,7 +53,7 @@ namespace Portals.ComponentFramework.Interfaces.Test.Harness
                 Path = "/portal/v1"
             };
 
-            var accessToken = await IdentityProvider.GetAccessTokenAsync(_configuration, authority: ComponentFrameworkOptions.PortalUrl);
+            var accessToken = await IdentityProvider.GetAccessTokenAsync(_configuration, ComponentFrameworkOptions.PortalUrl);
 
             var portalsFEPortalOpenApiClient = new PortalsFEPortalOpenApiClient(_portalsFePortalHttpClient)
             {
