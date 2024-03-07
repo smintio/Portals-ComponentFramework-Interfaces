@@ -13,14 +13,14 @@ namespace Portals.ComponentFramework.Interfaces.Test.Authentication
         const int DefaultTimeout = 60 * 5; // 5 mins (in seconds)
 
         readonly IWebHost _host;
-        readonly TaskCompletionSource<string?> _source = new TaskCompletionSource<string?>();
+        readonly TaskCompletionSource<string> _source = new TaskCompletionSource<string>();
         readonly string _url;
 
         public string Url => _url;
 
-        public LoopbackHttpListener(int port, string? path = null)
+        public LoopbackHttpListener(int port, string path = null)
         {
-            path = path ?? string.Empty;
+            path ??= string.Empty;
 
             if (path.StartsWith("/"))
                 path = path.Substring(1);
@@ -78,7 +78,7 @@ namespace Portals.ComponentFramework.Interfaces.Test.Authentication
             });
         }
 
-        private async Task SetResultAsync(string? value, HttpContext ctx)
+        private async Task SetResultAsync(string value, HttpContext ctx)
         {
             try
             {
@@ -108,7 +108,7 @@ namespace Portals.ComponentFramework.Interfaces.Test.Authentication
             }
         }
 
-        public Task<string?> WaitForCallbackAsync(int timeoutInSeconds = DefaultTimeout)
+        public Task<string> WaitForCallbackAsync(int timeoutInSeconds = DefaultTimeout)
         {
 #pragma warning disable VSTHRD110 // Observe result of async calls
             Task.Run(async () =>

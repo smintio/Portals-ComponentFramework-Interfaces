@@ -69,7 +69,7 @@ namespace Portals.ComponentFramework.Interfaces.Test.Authentication
                 Authority = authority,
                 ClientId = clientId,
                 ClientSecret = clientSecret,
-                Scope = "smintio.full openid profile offline_access",
+                Scope = "smintio.portals.frontend openid profile offline_access",
                 RedirectUri = redirectUri.ToString(),
                 Browser = new SystemBrowser(port),
                 FilterClaims = false

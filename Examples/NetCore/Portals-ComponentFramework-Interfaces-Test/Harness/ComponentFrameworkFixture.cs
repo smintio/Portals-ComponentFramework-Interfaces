@@ -1,3 +1,4 @@
+using System;
 using System.IO;
 using System.Net.Http;
 using System.Threading.Tasks;
@@ -11,16 +12,18 @@ namespace Portals.ComponentFramework.Interfaces.Test.Harness
 {
     public class ComponentFrameworkFixture : IAsyncLifetime
     {
-        private const string _baseUrl = "https://demo.portalsapife.smint.io/frontend/v1";
-
         private readonly IConfiguration _configuration;
 
         private HttpClient _httpClient;
 
         public ComponentFrameworkFixture()
         {
+            var executingAssemblyLocation = AppContext.BaseDirectory;
+
+            var configurationBasePath = Path.GetDirectoryName(executingAssemblyLocation)!;
+
             _configuration = new ConfigurationBuilder()
-               .SetBasePath(Directory.GetCurrentDirectory())
+               .SetBasePath(configurationBasePath)
                .AddJsonFile("appsettings.json", false)
                .AddJsonFile("appsettings.local.json", true)
                .AddEnvironmentVariables()
@@ -41,9 +44,16 @@ namespace Portals.ComponentFramework.Interfaces.Test.Harness
 
             _httpClient = new HttpClient();
 
+            var apiUrl = _configuration["SmintIo:ApiUrl"];
+
+            if (string.IsNullOrEmpty(apiUrl))
+            {
+                throw new Exception("SmintIo API URL is empty");
+            }
+
             PortalsAPIFEOpenApiClient = new PortalsAPIFEOpenApiClient(_httpClient)
             {
-                BaseUrl = _baseUrl,
+                BaseUrl = apiUrl,
                 AccessToken = accessToken
             };
         }

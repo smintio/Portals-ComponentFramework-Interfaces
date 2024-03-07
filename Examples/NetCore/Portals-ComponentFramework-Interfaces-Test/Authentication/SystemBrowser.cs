@@ -37,9 +37,9 @@ namespace Portals.ComponentFramework.Interfaces.Test.Authentication
     {
         public int Port { get; }
 
-        private readonly string? _path;
+        private readonly string _path;
 
-        public SystemBrowser(int? port = null, string? path = null)
+        public SystemBrowser(int? port = null, string path = null)
         {
             _path = path;
 
