@@ -51,7 +51,7 @@ namespace Portals.ComponentFramework.Interfaces.Test.Authentication
                 throw new Exception("Identity client secret configuration is empty");
             }
 
-            var redirectUrl = configuration["RedirectUrl"];
+            var redirectUrl = configuration["SmintIo:Auth:RedirectUrl"];
 
             if (string.IsNullOrEmpty(redirectUrl))
             {
