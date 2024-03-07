@@ -67,6 +67,10 @@ Retrieves details of a single asset based on the provided parameters.
 }
 ```
 
+##### Example
+
+- GetAssetAsync API call via C# client can be found [here](../../Examples/NetCore/Portals-ComponentFramework-Interfaces-Test/Integration/IAssetsReadTests.cs#L17).
+
 #### GetAssetsAsync
 
 Retrieves details of multiple assets based on the provided parameters.
@@ -107,6 +111,10 @@ Retrieves details of multiple assets based on the provided parameters.
   ]
 }
 ```
+
+##### Example
+
+- GetAssetsAsync API call via C# client can be found [here](../../Examples/NetCore/Portals-ComponentFramework-Interfaces-Test/Integration/IAssetsReadTests.cs#L55).
 
 #### GetResourceAssetAsync
 
@@ -176,6 +184,9 @@ Returns the supported features of the specific underlying `IAssetsSearch` implem
     "result_string": "{\"isRandomAccessSupported\":true,\"isFullTextSearchProposalsSupported\":false,\"isFolderNavigationSupported\":false}"
 }
 ```
+##### Example
+
+- GetFeatureSupportAsync API call via C# client can be found [here](../../Examples/NetCore/Portals-ComponentFramework-Interfaces-Test/Integration/IAssetsSearchTests.cs#L17).
 
 #### GetFormItemDefinitionAllowedValuesAsync
 
@@ -222,6 +233,10 @@ Returns the allowed values for a form item definition
     "allowedValuesTotalCount": 1
 }
 ```
+
+##### Example
+
+- GetFormItemDefinitionAllowedValuesAsync API call via C# client can be found [here](../../Examples/NetCore/Portals-ComponentFramework-Interfaces-Test/Integration/IAssetsSearchTests.cs#L60).
 
 #### GetFormItemDefinitionAllowedValuesResourceAssetsAsync
 
@@ -318,6 +333,10 @@ Searches for assets based on the provided parameters.
 }
 ```
 
+##### Example
+
+- SearchAssetsAsync API call via C# client can be found [here](../../Examples/NetCore/Portals-ComponentFramework-Interfaces-Test/Integration/IAssetsSearchTests.cs#L43).
+- 
 #### SearchResourceAssetsAsync
 
 Searches for assets based on the provided parameters for a resource asset type.
@@ -382,6 +401,10 @@ This feature is only available when `isRandomAccessSupported` is true when `GetF
   ]
 }
 ```
+
+##### Example
+
+- GetRandomAssetsAsync API call via C# client can be found [here](../../Examples/NetCore/Portals-ComponentFramework-Interfaces-Test/Integration/IAssetsReadRandomTests.cs#L17).
 
 ### Common enumerations
 
