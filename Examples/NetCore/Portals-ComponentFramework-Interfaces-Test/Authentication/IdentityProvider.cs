@@ -7,9 +7,9 @@ namespace Portals.ComponentFramework.Interfaces.Test.Authentication
 {
     public static class IdentityProvider
     {
-        public static async Task<string> GetAccessTokenAsync(IConfiguration configuration)
+        public static async Task<string> GetAccessTokenAsync(IConfiguration configuration, string authority)
         {
-            var oidcClientOptions = GetOidcClientOptions(configuration);
+            var oidcClientOptions = GetOidcClientOptions(configuration, authority);
 
             if (oidcClientOptions == null)
             {
@@ -28,10 +28,8 @@ namespace Portals.ComponentFramework.Interfaces.Test.Authentication
             return loginResult.AccessToken;
         }
 
-        private static OidcClientOptions GetOidcClientOptions(IConfiguration configuration)
+        private static OidcClientOptions GetOidcClientOptions(IConfiguration configuration, string authority)
         {
-            var authority = configuration["SmintIo:Auth:Authority"];
-
             if (string.IsNullOrEmpty(authority))
             {
                 throw new Exception("Auth authority configuration is empty");
