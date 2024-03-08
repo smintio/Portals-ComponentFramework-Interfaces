@@ -38,7 +38,7 @@ namespace Portals.ComponentFramework.Interfaces.Test.Integration
             var serializedRequest = JsonConvert.SerializeObject(obj);
             var doubleEscaped = serializedRequest.Replace("\"", "\\\"");
 
-            var body = $"['{doubleEscaped}']";
+            var body = $"[\"{doubleEscaped}\"]";
 
             return body;
         }
