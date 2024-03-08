@@ -22,7 +22,7 @@ Pre-built API clients for the Smint.io Portals Payload API for C# and TypeScript
 
 For calling any Smint.io Portals Payload API endpoints, a bearer token is required. The bearer token can be acquired by using the industry standard OAuth2 protocol.
 
-A C# example of acquiring an access token is available [here](/Examples/NetCore/Portals-ComponentFramework-Interfaces-Test/Harness/ComponentFrameworkFixture.cs#L56).
+A C# example for using the Smint.io Portals Payload API is available [here](/Examples/NetCore/Portals-ComponentFramework-Interfaces-Test/Harness/ComponentFrameworkFixture.cs#L64).
 
 ## Accessing documentation
 
