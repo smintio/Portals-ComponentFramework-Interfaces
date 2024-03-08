@@ -12,11 +12,13 @@ Smint.io implements two types of background tasks: long-running and immediate-ex
 These tasks are designed to perform various operations asynchronously, allowing for efficient handling of resource-intensive processes.
 
 - **Long-Running Tasks**: Long-running tasks are operations that may take a significant amount of time to complete. These tasks are initiated and monitored asynchronously. The status and progress of long-running tasks can be queried repeatedly until they either completed or reach an error state. The result of a long-running task is provided in the `result_string` property upon completion.
+    - **Polling Time**: There should be a minimum polling time between each retrieval of a task. While a minimum of 1 second is necessary to avoid excessive polling, it is recommended to set the polling interval between 5 to 10 seconds depending on the specific use case.
+    - **Exponential Backoff**: Never use exponential backoff strategies for polling of a task. If a failure occurs, simply wait for the next polling interval to retry.
 - **Immediate-Execution Tasks**: Immediate-execution tasks are operations that are executed immediately without significant delay. Unlike long-running tasks, immediate-execution tasks typically complete quickly and provide their result promptly. The result of an immediate-execution task is also available in the `result_string` property upon completion.
 
 Learn more about how to access the Swagger documentation for this method [here](../../README.md#swagger-page).
 
-Current version of this document is: 1.0.0 (as of 1st of March, 2024)
+Current version of this document is: 1.0.1 (as of 7th of March, 2024)
 
 ## Signature
 

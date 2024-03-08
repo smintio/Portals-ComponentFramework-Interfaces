@@ -13,17 +13,18 @@ For more information on how background tasks are handled in Smint.io, please ref
 
 To maintain brevity, we will solely specify which methods are either long-running or immediately executed. 
 
+Current version of this document is: 1.0.0 (as of 8th of March, 2024)
+
 # IAssets
 
 The `IAssets` data adapter interface provides methods to access assets in Smint.io Portals.
 
-## Inherited interfaces
+## Interfaces
 
-- [IAssetsRead](#IAssetsRead): Data adapter interface for reading assets.
-- [IAssetsSearch](#IAssetsSearch): Data adapter interface for searching assets.
-- [IAssetsReadRandom](#IAssetsReadRandom): Data adapter interface for reading assets randomly.
-
-- Documentation for further interfaces (e.g. IAssetsDownload) is coming soon
+- [IAssetsRead](#iassetsread): Data adapter interface for reading assets.
+- [IAssetsSearch](#iassetssearch): Data adapter interface for searching assets.
+- [IAssetsReadRandom](#iassetsreadrandom): Data adapter interface for reading assets randomly.
+- [IAssetsDownload](#iassetsdownload): Data adapter interface for downloading assets.
 
 ---
 
@@ -198,9 +199,9 @@ Returns the allowed values for a form item definition
 
 - An object containing parameters for retrieving allowed values.
   - `SearchQueryString` (string): Text entered by the user to match against searchable fields of the assets.
-  - `CurrentFilters` (FormFieldValuesModel): Filters selected by the user.
-  - `ContentType` (ContentType, optional): The content types of the assets to return.
-  - `ResourceAssetMode` (ResourceAssetMode, optional): Specifies how to handle resource asset data adapters.
+  - `CurrentFilters` (CurrentFiltersParameters): Filters selected by the user.
+  - `ContentType` ([ContentType](#contenttype), optional): The content types of the assets to return.
+  - `ResourceAssetMode` ([ResourceAssetMode](#resourceassetmode), optional): Specifies how to handle resource asset data adapters.
   - `AssetCategory` (string): The asset category of the asset to return.
   - `SearchResultSetUuid` (string, optional): The UUID of the last search result, for endless scrolling, if supported.
   - `FormItemDefinitionId` (string): The form item definition ID to get the allowed values for.
@@ -267,9 +268,9 @@ Searches for assets based on the provided parameters.
   - `ParentFolderIds` (FolderIdentifier[], optional): Optional list of parent folder IDs to search within. Only supported if `IsFolderNavigationSupported` is true.
   - `ProductIds` (ProductIdentifier[], optional): Optional list of product IDs to search within.
   - `QueryString` (string): Text entered by the user to match against searchable fields of the assets.
-  - `CurrentFilters` (FormFieldValuesModel): Filters selected by the user, usually targeting groups membership of the assets.
-  - `ContentType` (ContentType, optional): The content type of the assets to return.
-  - `ResourceAssetMode` (ResourceAssetMode, optional): Specifies how to handle resource asset data adapters.
+  - `CurrentFilters` (CurrentFiltersParameters): Filters selected by the user, usually targeting groups membership of the assets.
+  - `ContentType` ([ContentType](#contenttype), optional): The content type of the assets to return.
+  - `ResourceAssetMode` ([ResourceAssetMode](#resourceassetmode), optional): Specifies how to handle resource asset data adapters.
   - `AssetCategory` (string): The asset category of the assets to return.
   - `SearchResultSetUuid` (string, optional): The UUID of the last search result, for endless scrolling, if supported.
   - `Page` (int?, optional): The page number, zero-based.
@@ -375,8 +376,8 @@ This feature is only available when `isRandomAccessSupported` is true when `GetF
 ##### Parameters
 
 - An object containing parameters for retrieving random assets.
-  - `ContentType` (ContentType, optional): The content type of the assets to return. If not set, defaults to image.
-  - `ResourceAssetMode` (ResourceAssetMode, optional): Specifies how to handle resource asset data adapters.
+  - `ContentType` ([ContentType](#contenttype), optional): The content type of the assets to return. If not set, defaults to image.
+  - `ResourceAssetMode` ([ResourceAssetMode](#resourceassetmode), optional): Specifies how to handle resource asset data adapters.
   - `AssetCategory` (string): The asset category of the assets to return.
   - `Max` (int, optional): The maximum number of image assets to return. Defaults to 1.
 
@@ -408,9 +409,123 @@ This feature is only available when `isRandomAccessSupported` is true when `GetF
 
 - GetRandomAssetsAsync API call via C# client can be found [here](../../Examples/NetCore/Portals-ComponentFramework-Interfaces-Test/Integration/IAssetsReadRandomTests.cs#L17).
 
-### Common enumerations
+## IAssetsDownload
 
-#### ContentType enum
+The `IAssetsDownload` interface provides methods to download assets in Smint.io Portals.
+
+- [GetAssetsDownloadsForAssetsAsync](#getassetsdownloadsforassetsasync): Returns the available assets renditions e.g. Original asset, Preview thumbnail and etc.
+- [InitiateAssetsDownloadForAssetsAsync](#initiateassetsdownloadforassetsasync): Returns the location of the asset blob.
+
+### Methods
+
+#### GetAssetsDownloadsForAssetsAsync
+
+Gets the available downloads for the given assets.
+
+##### Parameters
+
+- An object containing parameters for retrieving asset downloads.
+  - `AssetIds` (AssetIdentifierParameter[]): An array of asset identifiers.
+  - `ShareId` (string, optional): Optional share ID to download assets as a consumer of a share.
+  - `ShareSecret` (string, optional): Optional share secret to download assets as a consumer of a share.
+
+##### Input
+
+```
+'["{\"assetIds\":[{\"id\":\"123:image:00000000-0000-0000-0000-000000000000\"}]}"]'
+```
+
+##### Output
+
+- Returns the UUID of the background operation. The background task must be queried until its state is completed. Then the `result_string` will contain a returned `AssetDownloadGroups` array, which returns details of the assets.
+
+```JSON
+{
+  "assetDownloadGroups": [
+    {
+      "groupId": "da:123:image",
+      "groupName": "Image",
+      "assetDownloadItems": [
+        {
+          "groupId": "da:123:image",
+          "itemId": "Original",
+          "description": "Original",
+          "count": 1,
+          "fileSizeInBytes": 1234567,
+          "selectedByDefault": true,
+          "maxAssetCountExceeded": false,
+          "assetIds": [
+            "123:image:00000000-0000-0000-0000-000000000000"
+          ]
+        }
+      ],
+      "immediatelyDownload": true,
+    }
+  ]
+}
+```
+
+##### Example
+
+- GetAssetsDownloadsForAssets API call via C# client can be found [here](../../Examples/NetCore/Portals-ComponentFramework-Interfaces-Test/Integration/IAssetsDownloadTests.cs#L18).
+
+#### InitiateAssetsDownloadForAssetsAsync
+
+Initiates a download for the given assets.
+
+##### Parameters
+
+- An object containing parameters for initiating asset downloads.
+  - `AssetIds` (AssetIdentifierParameter[]): An array of asset identifiers.
+  - `AssetDownloadItems` (AssetDownloadItemParameters[]): The asset download items.
+  - `ImmediatelyDownload` (bool): Indicates whether the download should start immediately or a download link should be sent.
+  - `ShareId` (string, optional): Optional share ID to download assets as a consumer of a share.
+  - `ShareSecret` (string, optional): Optional share secret to download assets as a consumer of a share.
+
+##### Input
+
+```JSON
+{
+    "assetIds": [
+        "123:image:00000000-0000-0000-0000-000000000000"
+    ],
+    "assetDownloadItems": [
+    {
+        "groupId": "da:123:image",
+        "itemId": "Original",
+        "description": "Original",
+        "count": 1,
+        "fileSizeInBytes": 1234567,
+        "selectedByDefault": true,
+        "maxAssetCountExceeded": false,
+        "assetIds": [
+            "123:image:00000000-0000-0000-0000-000000000000"
+        ]
+    }
+    ],
+    "immediatelyDownload": true,
+}
+```
+
+##### Output
+
+- Returns the UUID of the background operation. The background task must be queried until its state is completed. Then the `result_string` will contain a returned JSON represented as `InitiateAssetsDownloadResult` object, which contains the asset download URL.
+
+```json
+{
+  "assetDownloadUrl": {
+    "url": "..."
+  }
+}
+```
+
+##### Example
+
+- InitiateAssetsDownloadForAssetsAsync API call via C# client can be found [here](../../Examples/NetCore/Portals-ComponentFramework-Interfaces-Test/Integration/IAssetsDownloadTests.cs#L95).
+
+## Common enumerations
+
+### ContentType
 
 An enum representing the content type of assets.
 
@@ -419,7 +534,7 @@ An enum representing the content type of assets.
 - `Video`: Specifies that the asset type is a video.
 - `Audio`: Specifies that the asset type is an audio file.
 
-#### ResourceAssetMode enum
+### ResourceAssetMode
 
 An enum specifying how to handle resource asset data adapters.
 
