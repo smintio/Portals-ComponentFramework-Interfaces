@@ -198,7 +198,7 @@ Returns the allowed values for a form item definition
 ##### Parameters
 
 - An object containing parameters for retrieving allowed values.
-  - `SearchQueryString` (string): Text entered by the user to match against searchable fields of the assets.
+  - `SearchQueryString` (string): Text entered by the user to match against searchable fields of the assets.  
   - `CurrentFilters` (CurrentFiltersParameters): Filters selected by the user.
   - `ContentType` ([ContentType](#contenttype), optional): The content types of the assets to return.
   - `ResourceAssetMode` ([ResourceAssetMode](#resourceassetmode), optional): Specifies how to handle resource asset data adapters.
@@ -267,6 +267,7 @@ Searches for assets based on the provided parameters.
 
 - An object containing parameters for searching assets.
   - `ParentFolderIds` (FolderIdentifier[], optional): Optional list of parent folder IDs to search within. Only supported if `IsFolderNavigationSupported` is true.
+  - `RelatedAssetIds` (AssetIdentifier[], optional): If supported by the data source, will return asset related to the given assets (e.g. product assets assigned to a file-based asset)
   - `QueryString` (string): Text entered by the user to match against searchable fields of the assets.
   - `CurrentFilters` (CurrentFiltersParameters): Filters selected by the user, usually targeting groups membership of the assets.
   - `ContentType` ([ContentType](#contenttype), optional): The content type of the assets to return.
