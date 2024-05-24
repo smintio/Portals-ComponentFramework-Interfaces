@@ -202,6 +202,7 @@ Returns the allowed values for a form item definition
   - `CurrentFilters` (CurrentFiltersParameters): Filters selected by the user.
   - `ContentType` ([ContentType](#contenttype), optional): The content types of the assets to return.
   - `ResourceAssetMode` ([ResourceAssetMode](#resourceassetmode), optional): Specifies how to handle resource asset data adapters.
+  - `ResourceAssetType`: The resource asset type of the resource assets to return.
   - `AssetCategory` (string): The asset category of the asset to return.
   - `SearchResultSetUuid` (string, optional): The UUID of the last search result, for endless scrolling, if supported.
   - `FormItemDefinitionId` (string): The form item definition ID to get the allowed values for.
@@ -270,7 +271,7 @@ Searches for assets based on the provided parameters.
   - `CurrentFilters` (CurrentFiltersParameters): Filters selected by the user, usually targeting groups membership of the assets.
   - `ContentType` ([ContentType](#contenttype), optional): The content type of the assets to return.
   - `ResourceAssetMode` ([ResourceAssetMode](#resourceassetmode), optional): Specifies how to handle resource asset data adapters.
-  - `ResourceAssetType` ([ResourceAssetType](#resourceassettype), optional): Specifies which resource asset types should be searched.
+  - `ResourceAssetType`: The resource asset type of the resource assets to return.
   - `AssetCategory` (string): The asset category of the assets to return.
   - `SearchResultSetUuid` (string, optional): The UUID of the last search result, for endless scrolling, if supported.
   - `Page` (int?, optional): The page number, zero-based.
@@ -378,6 +379,7 @@ This feature is only available when `isRandomAccessSupported` is true when `GetF
 - An object containing parameters for retrieving random assets.
   - `ContentType` ([ContentType](#contenttype), optional): The content type of the assets to return. If not set, defaults to image.
   - `ResourceAssetMode` ([ResourceAssetMode](#resourceassetmode), optional): Specifies how to handle resource asset data adapters.
+  - `ResourceAssetType`: The resource asset type of the resource assets to return.
   - `AssetCategory` (string): The asset category of the assets to return.
   - `Max` (int, optional): The maximum number of image assets to return. Defaults to 1.
 
