@@ -199,6 +199,7 @@ Returns the allowed values for a form item definition
 
 - An object containing parameters for retrieving allowed values.
   - `SearchQueryString` (string): Text entered by the user to match against searchable fields of the assets.
+  - `RelatedAssetIds` (AssetIdentifier[], optional): If supported by the data source, will return asset related to the given assets (e.g. product assets assigned to a file-based asset)
   - `CurrentFilters` (CurrentFiltersParameters): Filters selected by the user.
   - `ContentType` ([ContentType](#contenttype), optional): The content types of the assets to return.
   - `ResourceAssetMode` ([ResourceAssetMode](#resourceassetmode), optional): Specifies how to handle resource asset data adapters.
