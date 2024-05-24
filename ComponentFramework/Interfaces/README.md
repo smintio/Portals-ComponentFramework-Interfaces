@@ -7,7 +7,7 @@ Please note, that at any time, using our SDKs, data adapters with custom data ad
 Current version of this document is: 1.0.0 (as of 1st of March, 2024)
 
 - [IAssets](IAssets.md) - Data adapter interface representing a complete feature set needed to read and search assets related data.
-- Documentation for further interfaces (e.g. IProducts, ICollections, IShares, ...) is coming soon
+- Documentation for further interfaces (e.g. IProductAssets, ICollections, IShares, ...) is coming soon
 
 Contributors
 ============

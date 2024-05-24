@@ -266,11 +266,11 @@ Searches for assets based on the provided parameters.
 
 - An object containing parameters for searching assets.
   - `ParentFolderIds` (FolderIdentifier[], optional): Optional list of parent folder IDs to search within. Only supported if `IsFolderNavigationSupported` is true.
-  - `ProductIds` (ProductIdentifier[], optional): Optional list of product IDs to search within.
   - `QueryString` (string): Text entered by the user to match against searchable fields of the assets.
   - `CurrentFilters` (CurrentFiltersParameters): Filters selected by the user, usually targeting groups membership of the assets.
   - `ContentType` ([ContentType](#contenttype), optional): The content type of the assets to return.
   - `ResourceAssetMode` ([ResourceAssetMode](#resourceassetmode), optional): Specifies how to handle resource asset data adapters.
+  - `ResourceAssetType` ([ResourceAssetType](#resourceassettype), optional): Specifies which resource asset types should be searched.
   - `AssetCategory` (string): The asset category of the assets to return.
   - `SearchResultSetUuid` (string, optional): The UUID of the last search result, for endless scrolling, if supported.
   - `Page` (int?, optional): The page number, zero-based.
