@@ -30,9 +30,6 @@ Access will be granted to either Smint.io Solution Partners or to all our Smint.
 Also note that, if you want to us the pre-built API clients, you will need an account with Microsoft Visual 
 Studio cloud offerings (Azure DevOps), as the API clients are hosted there.
 
-Also note that, if you want to us the pre-built API clients, you will need an account with Microsoft Visual 
-Studio cloud offerings (Azure DevOps), as the API clients are hosted there.
-
 For calling any Smint.io Portals Payload API endpoints, a bearer token is required. The bearer token can be acquired by using the industry standard OAuth2 protocol.
 
 A C# example for using the Smint.io Portals Payload API is available [here](/Examples/NetCore/Portals-ComponentFramework-Interfaces-Test/Harness/ComponentFrameworkFixture.cs#L64).
