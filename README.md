@@ -10,6 +10,12 @@ The Smint.io Portals component framework is available through the `Smint.io Port
 
 Pre-built API clients for the Smint.io Portals Frontend API for C# and TypeScript are available on demand.
 
+Access to the pre-built API clients is restricted. Get in contact with Smint.io and request access.
+Access will be granted to either Smint.io Solution Partners or to all our Smint.io Portals Enterprise plan customers.
+
+Also note that, if you want to us the pre-built API clients, you will need an account with Microsoft Visual 
+Studio cloud offerings (Azure DevOps), as the API clients are hosted there.
+
 For calling any Smint.io Portals Frontend API endpoints, a bearer token is required. The bearer token can be acquired by using the industry standard OAuth2 protocol.
 
 A C# example of acquiring an access token is available [here](/Examples/NetCore/Portals-ComponentFramework-Interfaces-Test/Harness/ComponentFrameworkFixture.cs#L56).
@@ -18,25 +24,22 @@ A C# example of acquiring an access token is available [here](/Examples/NetCore/
 
 If, upfront, more information about the user and the portal is required, the `Smint.io Portals Payload API`, which is also REST-based API, can be used to query details, including e.g. the base URL of the Smint.io Portals Frontend API, if it is not known already.
 
-Pre-built API clients for the Smint.io Portals Payload API for C# and TypeScript are available on demand.
+Access to the pre-built API clients is restricted. Get in contact with Smint.io and request access.
+Access will be granted to either Smint.io Solution Partners or to all our Smint.io Portals Enterprise plan customers.
+
+Also note that, if you want to us the pre-built API clients, you will need an account with Microsoft Visual 
+Studio cloud offerings (Azure DevOps), as the API clients are hosted there.
+
+Also note that, if you want to us the pre-built API clients, you will need an account with Microsoft Visual 
+Studio cloud offerings (Azure DevOps), as the API clients are hosted there.
 
 For calling any Smint.io Portals Payload API endpoints, a bearer token is required. The bearer token can be acquired by using the industry standard OAuth2 protocol.
 
 A C# example for using the Smint.io Portals Payload API is available [here](/Examples/NetCore/Portals-ComponentFramework-Interfaces-Test/Harness/ComponentFrameworkFixture.cs#L64).
 
-## Accessing documentation
-
-The documentation for both the Smint.io Portals Frontend API and the Smint.io Portals Payload API is available on Swagger, but access is restricted.
-
-Please note that you will be requested to sign a Non-Disclosure Agreement (NDA) before gaining access. 
-To request access, please contact [Smint.io](mailto:support@smint.io).
-
-Also note that, if you want to us the pre-built API clients, you will need an account with Microsoft Visual 
-Studio cloud offerings (Azure DevOps), as the API clients are hosted there.
-
 ## Swagger page
 
-If access is granted, you can find the Swagger documentation for both the Smint.io Portals Frontend API and the Smint.io Portals Payload API API by following these steps:
+You can find the Swagger documentation for both the Smint.io Portals Frontend API and the Smint.io Portals Payload API API by following these steps:
 
 - Log into your Smint.io Portals backend
 - Click the user icon
