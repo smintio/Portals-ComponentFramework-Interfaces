@@ -1,18 +1,22 @@
 ﻿using System;
 using System.IO;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
+using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Hosting;
+using Microsoft.Extensions.Logging;
 
 namespace Portals.ComponentFramework.Interfaces.Test.Authentication
 {
-    public class LoopbackHttpListener : IDisposable
+    public class LoopbackHttpListener : IDisposable, IHostLifetime
     {
         const int DefaultTimeout = 60 * 5; // 5 mins (in seconds)
 
-        readonly IWebHost _host;
+        readonly WebApplication _host;
         readonly TaskCompletionSource<string> _source = new TaskCompletionSource<string>();
         readonly string _url;
 
@@ -27,11 +31,21 @@ namespace Portals.ComponentFramework.Interfaces.Test.Authentication
 
             _url = $"http://127.0.0.1:{port}/{path}";
 
-            _host = new WebHostBuilder()
-                .UseKestrel()
-                .UseUrls(_url)
-                .Configure(Configure)
-                .Build();
+            var webApplicationBuilder = WebApplication.CreateSlimBuilder();
+
+            webApplicationBuilder.WebHost.UseUrls(_url);
+
+            // the slim builder adds a console logger, the listener stays silent as before
+
+            webApplicationBuilder.Logging.ClearProviders();
+
+            // no console lifetime, so Ctrl+C ends the tool instead of only stopping the listener
+
+            webApplicationBuilder.Services.AddSingleton<IHostLifetime>(this);
+
+            _host = webApplicationBuilder.Build();
+
+            Configure(_host);
 
             _host.Start();
         }
@@ -44,8 +58,18 @@ namespace Portals.ComponentFramework.Interfaces.Test.Authentication
             {
                 await Task.Delay(500);
 
-                _host.Dispose();
+                await _host.DisposeAsync();
             });
+        }
+
+        Task IHostLifetime.WaitForStartAsync(CancellationToken cancellationToken)
+        {
+            return Task.CompletedTask;
+        }
+
+        Task IHostLifetime.StopAsync(CancellationToken cancellationToken)
+        {
+            return Task.CompletedTask;
         }
 
         void Configure(IApplicationBuilder app)
